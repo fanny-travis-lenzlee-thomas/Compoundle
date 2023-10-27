@@ -1,0 +1,45 @@
+body {
+  text-align: center;
+}
+
+#imageListId {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#imageListId div {
+  margin: 0 4px 4px 4px;
+  padding: 0.4em;
+  display: inline-block;
+}
+
+#outputvalues {
+  margin: 20px 2px 2px 2px;
+  padding: 0.4em;
+  padding-left: 1.5em;
+  width: 250px;
+  border: 2px solid dark-green;
+  display: none;
+}
+
+.listitemClass {
+  border: 1px solid #006400;
+  width: 150px;
+}
+
+.height {
+  height: 10px;
+}
+
+#guess-h5 {
+  text-align: center;
+}
+
+#guess-box {
+  text-align: center;
+}
+
+#submit-button {
+  margin: 10px;
+}

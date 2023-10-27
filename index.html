@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arranger</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  </head>
+
+  <body>
+    <h1>Rearranger</h1>
+    <h2>Put the words into the correct order</h2>
+    <div class="height"></div>
+
+    <div id="imageListId">
+      <div id="blockNo1" class="listitemClass">
+        <h5>Stage</h5>
+      </div>
+      <div id="blockNo3" class="listitemClass">
+        <h5>Up</h5>
+      </div>
+      <div id="blockNo5" class="listitemClass">
+        <h5><input id="guess-box" /></h5>
+      </div>
+
+      <div id="blockNo7" class="listitemClass">
+        <h5>Put</h5>
+      </div>
+
+      <div id="blockNo2" class="listitemClass">
+        <h5>Out</h5>
+      </div>
+      <div id="blockNo4" class="listitemClass">
+        <h5>Down</h5>
+      </div>
+      <div id="blockNo6" class="listitemClass">
+        <h5>Stairs</h5>
+      </div>
+    </div>
+
+    <div id="outputDiv">
+      <input id="outputvalues" type="text" value="" />
+      <button id="submit-button">Submit</button>
+    </div>
+    <div id="results-container"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
