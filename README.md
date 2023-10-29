@@ -9,6 +9,8 @@ In this project, our team was asked to design and build an Interactive Full-Stac
 ## URLs submitted:
 * GITHUB Repo: https://github.com/fanny-travis-lenzlee-thomas/rearranger-working 
 
+* Wireframes & Data Models: https://whimsical.com/wireframes-for-project-2-Wv3cRLETuxDvhTZVdxpumD 
+
 * Heroku URL: TBD
 
 ## References/Resources:
