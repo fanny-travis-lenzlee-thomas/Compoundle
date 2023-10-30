@@ -5,91 +5,91 @@ const gameData = [
   {
     words: "Off, Hats, Top",
     correct_order: "3,2,1",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 300,
   },
   {
     words: "Same, Man, Old",
     correct_order: "1,3,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 300,
   },
   {
     words: "Belly, Beer, Flop",
     correct_order: "2,1,3",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 300,
   },
   {
     words: "Red, Table, Water, Hot",
     correct_order: "1,4,3,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 400,
   },
   {
     words: "Box, Rain, Check, Cutter",
     correct_order: "2,3,1,4",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 400,
   },
   {
     words: "War, Fighter, Flame, Crime",
     correct_order: "3,1,4,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 400,
   },
   {
     words: "Good, Feel, Out, Luck, Last",
     correct_order: "2,1,4,3,5",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 500,
   },
   {
     words: "Work, Search, Paint, Job, Team",
     correct_order: "3,4,2,5,1",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 500,
   },
   {
     words: "Full, Shot, Moon, Up, Beam",
     correct_order: "1,3,5,4,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 500,
   },
   {
     words: "Come, Sense, Animal, Back, Kingdom, Talk",
     correct_order: "3,5,1,4,6,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 600,
   },
   {
     words: "Last, Encounter, Chance, Fake, Out, Pump",
     correct_order: "6,4,5,1,3,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 600,
   },
   {
     words: "Principle, Best, Law, Case, Abiding, Reason",
     correct_order: "2,4,3,5,1,6",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 600,
   },
   {
     words: "Paper, Saint, Airplane, Patron, Wall, Hanger, Paul",
     correct_order: "4,2,7,5,1,3,6",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 700,
   },
   {
     words: "Market, Off, Suit, Cap, Jacket, Track, Farmers",
     correct_order: "7,1,4,2,6,3,5",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 700,
   },
   {
     words: "Shoot, Move, Smart, Trouble, Daily, Out, Double",
     correct_order: "5,7,4,1,6,3,2",
-    hidden_word: NULL,
+    hidden_word: null,
     score: 700,
   },
   //   {
@@ -155,10 +155,11 @@ const gameData = [
   },
 ];
 
-const seedGallery = () => Game.bulkCreate(gameData);
+// I believe the below is incorrect code but I am not sure.
+// const seedGameTable = () => Game.bulkCreate(gameData);
 
-module.exports = seedGallery;
-const seedDatabase = async () => {
+//I think this is the correct code.
+const seedGameTable = async () => {
   await sequelize.sync({ force: true });
 
   await Game.bulkCreate(gameData, {
@@ -169,4 +170,7 @@ const seedDatabase = async () => {
   process.exit(0);
 };
 
-seedGallery();
+seedGameTable();
+
+//I am also not sure if we need to export the seedGameTable function. I believe that is for if seeding code is in multiple files and controlled via a central index.
+// module.exports = seedGameTable;
