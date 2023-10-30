@@ -11,6 +11,22 @@ Game.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    words: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    correct_order: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hidden_word: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
