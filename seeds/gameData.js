@@ -1,5 +1,4 @@
-const sequelize = require("../config/connection");
-const Game = require("../models/Game");
+const { Game } = require("../models");
 
 const gameData = [
   {
@@ -158,15 +157,3 @@ const gameData = [
 const seedGallery = () => Game.bulkCreate(gameData);
 
 module.exports = seedGallery;
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-
-  await Game.bulkCreate(gameData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  process.exit(0);
-};
-
-seedGallery();
