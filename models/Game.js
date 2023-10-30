@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Gallery extends Model {}
+class Game extends Model {}
 
-Gallery.init(
+Game.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,16 +11,20 @@ Gallery.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    words: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    starting_date: {
-      type: DataTypes.DATE,
+    correct_order: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    ending_date: {
-      type: DataTypes.DATE,
+    hidden_word: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    score: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
@@ -28,8 +32,8 @@ Gallery.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'gallery',
+    modelName: 'game',
   }
 );
 
-module.exports = Gallery;
+module.exports = Game;

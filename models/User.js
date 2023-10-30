@@ -16,10 +16,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // adding user name for the user or just use email?
+    // username: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
