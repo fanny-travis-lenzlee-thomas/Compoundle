@@ -52,6 +52,7 @@ $(function () {
 
 submitButton.addEventListener("click", function () {
   checkAnswer(blankword, correctOrder);
+  console.log("I've been clicked!");
 });
 
 correctAnswerArray = correctOrder.split(",").map(Number);

@@ -107,6 +107,12 @@ const gameData = [
     score: 1000,
   },
   {
+    words: "Flash, Game, Woman, Card, Boy, Board, ",
+    correct_order: "1,4,6,2,5,7,3",
+    hidden_word: "wonder",
+    score: 1000,
+  },
+  {
     words: "High, Stadium, Area, Flying, Seating, , Fantasy",
     correct_order: "4,1,7,6,2,5,3",
     hidden_word: "football",
@@ -123,12 +129,6 @@ const gameData = [
     correct_order: "5,3,1,4,7,6,2",
     hidden_word: "town",
     score: 1000,
-  },
-  {
-    words: "Flash, Game, Woman, Card, Boy, Board, ",
-    correct_order: "1,4,6,2,5,7,3",
-    hidden_word: "wonder",
-    score: 700,
   },
   {
     words: "Hole, Yellow, Walk, Belly, , Man, Fat",
@@ -156,7 +156,7 @@ const gameData = [
   },
 ];
 
-// I believe the below is redu code for this setup but I am not sure.
+// I believe the below is redundant code for this setup but I am not sure.
 // const seedGameTable = () => Game.bulkCreate(gameData);
 
 //I think this is the correct code.

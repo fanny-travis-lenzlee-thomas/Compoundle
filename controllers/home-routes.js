@@ -34,16 +34,19 @@ router.get("/", async (req, res) => {
 // GET one gallery
 // Use the custom middleware before allowing the user to access the gallery
 router.get("/game/:id", async (req, res) => {
-  //I deleted withAuth from this line as middleware. we may want to put it back.
   try {
     const dbGameData = await Game.findByPk(req.params.id, {
       attributes: ["id", "words", "correct_order", "hidden_word", "score"],
     });
 
     const game = dbGameData.get({ plain: true });
-    // res.render("gallery", { gallery, loggedIn: req.session.loggedIn });
-
-    res.json(game);
+    const wordsArray = game.words.split(", ");
+    console.log(wordsArray);
+    for (i = 0; i < wordsArray.length; i++) {
+      console.log(`The word at index ${[i]} is ${wordsArray[i]}! Woohoo!`);
+      console.log(`The correct order is, ${game.correct_order}`);
+    }
+    res.render("partials/wordblock", { wordsArray });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
