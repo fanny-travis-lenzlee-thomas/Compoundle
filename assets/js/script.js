@@ -7,14 +7,6 @@ const blankword = "hand";
 const correctOrder = "3,1,5,2,7,4,6";
 outputArray = outputField.value.split(",").map(Number);
 
-$(function () {
-  $("#imageListId").sortable({
-    update: function (event, ui) {
-      getIdsOfImages();
-    },
-  });
-});
-
 function getIdsOfImages() {
   var values = [];
   $(".listitemClass").each(function (index) {
@@ -49,6 +41,14 @@ function checkAnswer(blankWord, correctOrder) {
     console.log("the correct order is, ", correctOrder);
   }
 }
+
+$(function () {
+  $("#imageListId").sortable({
+    update: function (event, ui) {
+      getIdsOfImages();
+    },
+  });
+});
 
 submitButton.addEventListener("click", function () {
   checkAnswer(blankword, correctOrder);

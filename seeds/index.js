@@ -92,6 +92,7 @@ const gameData = [
     hidden_word: null,
     score: 700,
   },
+  //This is a potential easy level to teach the player how to do the blanks.
   //   {
   //     words: "Swimming, P, Table",
   //     correct_order: "1,2,3",
@@ -155,7 +156,7 @@ const gameData = [
   },
 ];
 
-// I believe the below is incorrect code but I am not sure.
+// I believe the below is redu code for this setup but I am not sure.
 // const seedGameTable = () => Game.bulkCreate(gameData);
 
 //I think this is the correct code.
@@ -172,5 +173,5 @@ const seedGameTable = async () => {
 
 seedGameTable();
 
-//I am also not sure if we need to export the seedGameTable function. I believe that is for if seeding code is in multiple files and controlled via a central index.
+//I also do not believe we need to export the seedGameTable function. I believe that is for if seeding code is in multiple files and controlled via a central index.
 // module.exports = seedGameTable;
