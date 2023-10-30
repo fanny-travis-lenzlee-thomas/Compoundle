@@ -16,7 +16,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // adding user name for the user or just use email?
+    // adding username for the user or just use email?
     // username: {
     //   type: DataTypes.STRING,
     //   allowNull: false,
@@ -35,6 +35,18 @@ User.init(
       validate: {
         len: [6],
       },
+    },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    current_level: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'game',
+        key: 'id',
+        unique: true
+      }
     },
   },
   {
