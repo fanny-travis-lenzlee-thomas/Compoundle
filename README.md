@@ -11,10 +11,10 @@ In this project, our team was asked to design and build an Interactive Full-Stac
 
 * Wireframes & Data Models: https://whimsical.com/wireframes-for-project-2-Wv3cRLETuxDvhTZVdxpumD 
 
-* Heroku URL: TBD
+* Heroku URL: https://rearrangerapp-b7a73ed90fe8.herokuapp.com/
 
 ## References/Resources:
-We mostly referred to our recent lessons/activities for this project.
+We mostly referred to our recent lessons/activities for this project (Module 14 Activity #20 & #28).
 
 * MDN web docs for reference when using methods and functions
 
