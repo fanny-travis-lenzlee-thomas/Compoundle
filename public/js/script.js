@@ -2,15 +2,17 @@ const outputField = document.querySelector("#outputvalues");
 const submitButton = document.querySelector("#submit-button");
 const guessBox = document.querySelector("#guess-box");
 const resultsContainer = document.querySelector("#results-container");
+const blankWordBlock = document.querySelector("#blank-word");
+const correctOrderBlock = document.querySelector("#correct-order");
 
-const blankword = "hand";
-const correctOrder = "3,1,5,2,7,4,6";
+const blankWord = blankWordBlock.textContent;
+const correctOrder = correctOrderBlock.textContent;
 outputArray = outputField.value.split(",").map(Number);
 
 function getIdsOfImages() {
   var values = [];
   $(".listitemClass").each(function (index) {
-    values.push($(this).attr("id").replace("blockNo", ""));
+    values.push($(this).attr("id").replace("blockno", ""));
   });
   $("#outputvalues").val(values);
 }
@@ -51,7 +53,7 @@ $(function () {
 });
 
 submitButton.addEventListener("click", function () {
-  checkAnswer(blankword, correctOrder);
+  checkAnswer(blankWord, correctOrder);
   console.log("I've been clicked!");
 });
 

@@ -46,7 +46,12 @@ router.get("/game/:id", async (req, res) => {
       console.log(`The word at index ${[i]} is ${wordsArray[i]}! Woohoo!`);
       console.log(`The correct order is, ${game.correct_order}`);
     }
-    res.render("partials/wordblock", { wordsArray });
+
+    res.render("partials/wordblock", {
+      wordsArray,
+      correctOrder: game.correct_order,
+      blankWord: game.hidden_word,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
