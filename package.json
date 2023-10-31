@@ -1,7 +1,7 @@
 {
   "name": "rearranger-working",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bootcamp Project 2: Model-View-Controller (MVC) Challenge",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
