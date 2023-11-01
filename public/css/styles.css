@@ -1,17 +1,92 @@
+:root {
+  --primary: #77DDF9;
+  --secondary: #FFA0A3;
+  --light: #EAFBFF;
+  --dark: #414953;
+  --error: red;
+  --border-radius: 0.4rem;
+}
+
 body {
+  text-align: center;
+  font-family: sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background-color: var(--light);
+}
+
+header {
+  padding: 5px;
+  text-align: center;
+  /* background: var(--light); */
+  color: var(--dark);
+  font-family: 'Russo One', sans-serif;
+}
+
+nav a {
+  color: var(--dark);
+  padding: 10px 10px;
+  text-decoration: none;
   text-align: center;
 }
 
+aside {
+  flex: 0;
+  /* background-color: var(--tertiary); */
+  padding: 5px;
+  text-align: center;
+  color: var(--dark);
+}
+
+
+/* rearrange word blocks section */
 #imageListId {
-  margin: 0;
-  padding: 0;
+  margin: 20;
+  padding: 20;
   list-style-type: none;
 }
 
 #imageListId div {
-  margin: 0 4px 4px 4px;
-  padding: 0.4em;
+  margin: 0.5em;
+  padding: 0.5em;
   display: inline-block;
+}
+
+.listitemClass {
+  background-color: var(--secondary);
+  border-radius: var(--border-radius);
+  color: var(--dark);
+  font-family: 'Inconsolata', monospace;
+  width: 150px;
+}
+
+#guess-box {
+  text-align: center;
+  background-color: transparent;
+  font: inherit;
+  border-width: 0 0 1;
+  border-color: var(--dark);
+  box-sizing: content-box;
+  width: 90%;
+}
+
+/* not showing hidden words */
+.hidden {
+  display: none;
+}
+
+
+#submit-button {
+  margin: 10px;
+  background-color: var(--dark);
+  border-radius: var(--border-radius);
+  color: var(--light);
+  font-family: 'Inconsolata', monospace;
+  width: 150px;
+  height: 50px;
 }
 
 #outputvalues {
@@ -23,11 +98,6 @@ body {
   display: none;
 }
 
-.listitemClass {
-  border: 1px solid #006400;
-  width: 150px;
-}
-
 .height {
   height: 10px;
 }
@@ -36,10 +106,15 @@ body {
   text-align: center;
 }
 
-#guess-box {
-  text-align: center;
+
+.login-card {
+  margin: 0 0 20px 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 5px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--light);
 }
 
-#submit-button {
-  margin: 10px;
-}
