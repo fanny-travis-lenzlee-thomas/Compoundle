@@ -102,6 +102,7 @@ nav a:hover {
   border-width: thick; */
   background-color: #71797E;
   color: var(--light);
+  display: inline-grid;
 }
 
 .card header {
