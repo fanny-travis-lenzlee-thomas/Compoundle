@@ -15,10 +15,10 @@ router.get("/", async (req, res) => {
     console.log(games);
     res.json(games);
 
-    // res.render("homepage", {
-    //   games,
-    // loggedIn: req.session.loggedIn,
-    // });
+    res.render("homepage", {
+      games,
+    loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
