@@ -9,6 +9,7 @@
   --error: red;
   --border-radius: 0.4rem;
 }
+
 body {
   text-align: center;
   font-family: sans-serif;
@@ -20,21 +21,28 @@ body {
   background-color: var(--light);
 }
 header {
-  padding: 5px;
+  padding: 40px;
   text-align: center;
+
   color: var(--dark);
   font-family: "Russo One", sans-serif;
 }
+
+nav {
+  display: flex;
+  background-color: var(--dark);
+}
+
 nav a {
-  color: var(--dark);
-  padding: 10px 10px;
+  color: var(--light);
+  padding: 14px 20px;
   text-decoration: none;
   text-align: center;
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: var(--quatrinary);
+  background-color: var(--secondary);
 }
 
 #imageListId {
@@ -111,7 +119,56 @@ nav a:hover {
   text-align: center;
 }
 
-#guess-box {
+.login-card {
+  margin: 0 0 20px 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 5px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+
+.hidden {display: none;}
+
+/* CARDS */
+.card {
+  margin: 20px;
+  flex: 0 1 300px;
+  border: 7px double var(--dark);
+  border-radius: 10px;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.login-card {
+  margin: 0 20px;
+  /* flex: 0 0 50%; */
+  max-width: 50%;
+  padding: 15px;
+  /* border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  border-style: double;
+  border-width: thick; */
+  background-color: #71797E;
+  color: var(--light);
+  display: inline-grid;
+}
+
+.card header {
+  color: var(--light);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  background-color: var(--tertiary);
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  font-size: 1.4rem;
   text-align: center;
 }
 
@@ -134,6 +191,7 @@ form .form-textarea {
   display: block;
 }
 
+
 .hidden {
   display: none;
 }
@@ -148,6 +206,17 @@ form .form-textarea {
   background-color: var(--primary);
   color: var(--light);
 }
+
+form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 50%;
+}
+
+
 form label,
 form .form-label {
   display: inline-block;
@@ -213,13 +282,18 @@ button,
 }
 
 .maincontent {
-  flex: 4;
-  background-color: #fff;
+  /* flex: 4;
+  background-color: #fff; */
   padding: 50px;
-  display: flex;
+  /* display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+
+h1 a {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 button,
