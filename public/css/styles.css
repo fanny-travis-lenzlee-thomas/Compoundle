@@ -21,22 +21,28 @@ body {
 }
 
 header {
-  padding: 5px;
+  padding: 40px;
   text-align: center;
-  color: var(--dark);
+  background: var(--primary);
+  color: var(--light);
   font-family: 'Russo One', sans-serif;
 }
 
+nav {
+  display: flex;
+  background-color: var(--dark);
+}
+
 nav a {
-  color: var(--dark);
-  padding: 10px 10px;
+  color: var(--light);
+  padding: 14px 20px;
   text-decoration: none;
   text-align: center;
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: var(--quatrinary);
+  background-color: var(--secondary);
 }
 
 aside {
@@ -136,6 +142,20 @@ aside {
   color: var(--dark);
 }
 
+.login-card {
+  margin: 0 20px;
+  /* flex: 0 0 50%; */
+  max-width: 50%;
+  padding: 15px;
+  /* border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  border-style: double;
+  border-width: thick; */
+  background-color: #71797E;
+  color: var(--light);
+  display: inline-grid;
+}
+
 .card header {
   color: var(--light);
   font-weight: bold;
@@ -177,10 +197,6 @@ form select {
   background-position-x: 98%;
   background-position-y: 50%;
 }
-
-
-.hidden {
-  display: none;
 
 form label,
 form .form-label {
@@ -247,11 +263,16 @@ button,
 }
 
 .maincontent {
-  flex: 4;
-  background-color: #fff;
+  /* flex: 4;
+  background-color: #fff; */
   padding: 50px;
-  display: flex;
+  /* display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+
+h1 a {
+  text-decoration: none;
+  color: #ffffff;
 }
