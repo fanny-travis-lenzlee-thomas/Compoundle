@@ -44,4 +44,6 @@ body {
   margin: 10px;
 }
 
-.hidden {display: none;}
+.hidden {
+  display: none;
+}

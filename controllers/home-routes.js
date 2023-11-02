@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Users, Game } = require("../models");
 
 // Import the custom middleware
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 // GET all games for homepage
 router.get("/", async (req, res) => {
@@ -13,11 +13,11 @@ router.get("/", async (req, res) => {
 
     const games = dbGamesData.map((game) => game.get({ plain: true }));
     console.log(games);
-   // res.json(games);
+    // res.json(games);
 
     res.render("homepage", {
       games,
-    loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -35,16 +35,12 @@ router.get("/game/:id", async (req, res) => {
 
     const game = dbGameData.get({ plain: true });
     const wordsArray = game.words.split(", ");
-    console.log(wordsArray);
-    for (i = 0; i < wordsArray.length; i++) {
-      console.log(`The word at index ${[i]} is ${wordsArray[i]}! Woohoo!`);
-      console.log(`The correct order is, ${game.correct_order}`);
-    }
 
     res.render("partials/wordblock", {
       wordsArray,
       correctOrder: game.correct_order,
       blankWord: game.hidden_word,
+      level: game.id,
     });
   } catch (err) {
     console.log(err);
@@ -52,13 +48,13 @@ router.get("/game/:id", async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
 module.exports = router;
