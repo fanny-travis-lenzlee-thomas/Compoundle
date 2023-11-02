@@ -1,9 +1,10 @@
 :root {
-  --primary: #77DDF9;
-  --secondary: #FFA0A3;
+  --primary: #77ddf9;
+  --secondary: #ffa0a3;
   --tertiary: #899499;
   --quatrinary: #6c6b67;
-  --light: #EAFBFF;
+  --success: lightgreen;
+  --light: #eafbff;
   --dark: #414953;
   --error: red;
   --border-radius: 0.4rem;
@@ -19,13 +20,12 @@ body {
   justify-content: flex-start;
   background-color: var(--light);
 }
-
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
-  color: var(--light);
-  font-family: 'Russo One', sans-serif;
+
+  color: var(--dark);
+  font-family: "Russo One", sans-serif;
 }
 
 nav {
@@ -45,35 +45,24 @@ nav a:hover {
   background-color: var(--secondary);
 }
 
-aside {
-  flex: 0;
-  padding: 5px;
-  text-align: center;
-  color: var(--dark);
-}
-
-
-/* rearrange word blocks section */
 #imageListId {
-  margin: 20;
-  padding: 20;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
 
 #imageListId div {
-  margin: 0.5em;
-  padding: 0.5em;
+  margin: 0 4px 4px 4px;
+  padding: 0.4em;
   display: inline-block;
 }
-
 .listitemClass {
   background-color: var(--secondary);
   border-radius: var(--border-radius);
   color: var(--dark);
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
   width: 150px;
 }
-
 #guess-box {
   text-align: center;
   background-color: transparent;
@@ -84,22 +73,30 @@ aside {
   width: 90%;
 }
 
-/* not showing hidden words */
-.hidden {
-  display: none;
-}
-
-
 #submit-button {
   margin: 10px;
   background-color: var(--tertiary);
   border-radius: var(--border-radius);
   color: var(--light);
-  font-family: 'Inconsolata', monospace;
+  font-family: "Inconsolata", monospace;
+  width: 150px;
+  height: 50px;
+}
+#guess-h5 {
+  text-align: center;
+}
+
+#next-level-button {
+  margin: 10px;
+  background-color: var(--success);
+  border-radius: var(--border-radius);
+  color: var(--light);
+  font-family: "Inconsolata", monospace;
   width: 150px;
   height: 50px;
 }
 
+/* Output order styling */
 #outputvalues {
   margin: 20px 2px 2px 2px;
   padding: 0.4em;
@@ -109,6 +106,11 @@ aside {
   display: none;
 }
 
+.listitemClass {
+  border: 1px solid #006400;
+  width: 150px;
+}
+
 .height {
   height: 10px;
 }
@@ -116,7 +118,6 @@ aside {
 #guess-h5 {
   text-align: center;
 }
-
 
 .login-card {
   margin: 0 0 20px 0;
@@ -169,10 +170,11 @@ aside {
 .card-body {
   font-size: 1.4rem;
   text-align: center;
-  font-weight: bold;
 }
 
-/* FORM */
+#submit-button {
+  margin: 10px;
+}
 
 form {
   width: 100%;
@@ -189,6 +191,22 @@ form .form-textarea {
   display: block;
 }
 
+
+.hidden {
+  display: none;
+}
+
+.login-card {
+  margin: 0 0 20px 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 5px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--light);
+}
+
 form select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -197,6 +215,7 @@ form select {
   background-position-x: 98%;
   background-position-y: 50%;
 }
+
 
 form label,
 form .form-label {
@@ -220,13 +239,13 @@ form .form-input.form-input-squared {
   border-radius: 0;
 }
 
-form [type='checkbox'],
-form [type='radio'] {
+form [type="checkbox"],
+form [type="radio"] {
   display: inline-block;
 }
 
-label form [type='checkbox'], label
-form [type='radio'] {
+label form [type="checkbox"],
+label form [type="radio"] {
   display: inline-block;
 }
 
@@ -256,9 +275,9 @@ select {
   text-transform: none;
 }
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -275,4 +294,21 @@ button,
 h1 a {
   text-decoration: none;
   color: #ffffff;
+}
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }

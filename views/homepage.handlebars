@@ -1,15 +1,6 @@
-<button class="btn btn-primary" id="submit-button"><a href="game/1">Start Game</a></button>
 
-{{!-- {{#each games as |game|}}
-{{> wordblock}}
-{{/each}}  --}}
-
-{{!-- {{#each wordsArray}}
-  <div id="blockno{{@index}}" class="listitemClass">
-    {{#if this}}
-      <h5>{{this}}</h5>
-    {{else}}
-      <h5><input id="guess-box" /></h5>
-    {{/if}}
-  </div>
-{{/each}} --}}
+{{#if loggedIn}}
+  <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
+{{else}}
+  <button id="submit-button"><a href="game/1">Start Game</a></button>
+{{/if}}
