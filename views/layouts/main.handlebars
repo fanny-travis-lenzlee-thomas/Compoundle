@@ -23,7 +23,8 @@
     <nav>
       <a href="/">Home</a>
       {{#if loggedIn}}
-        <button id="logout" class="btn-no-style">Logout</button>
+        <a id="logout">Logout</a>
+        <h1> Welcome, {{username}}!</h1>
       {{else}}
         <a href="/login">Login</a>
       {{/if}}
@@ -31,9 +32,7 @@
     <main>
       {{!-- <aside>
         
-      </aside> --}}
-      <div class="rearranger">
-    
+      </aside> --}}    
         {{{body}}}
 
     </div>
@@ -43,7 +42,6 @@
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
-  <script src="/js/script.js"></script>
 </body>
 
 </html>

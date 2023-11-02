@@ -1,5 +1,8 @@
-
-<button id="submit-button"><a href="game/1">Start Game</a></button>
+{{#if loggedIn}}
+  <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
+{{else}}
+  <button id="submit-button"><a href="game/1">Start Game</a></button>
+{{/if}}
 
 {{!-- {{#each games as |game|}}
 {{> wordblock}}
