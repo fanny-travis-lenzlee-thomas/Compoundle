@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
     const games = dbGamesData.map((game) => game.get({ plain: true }));
     console.log(games);
-    res.json(games);
+   // res.json(games);
 
     res.render("homepage", {
       games,
@@ -53,11 +53,10 @@ router.get("/game/:id", async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   // res.redirect('/game/1');
-  //   //res.redirect('/');
-  //   return;
-  // }
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
   res.render('login');
 });

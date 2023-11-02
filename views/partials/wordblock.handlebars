@@ -1,3 +1,7 @@
+
+<h2>How to Play:</h2>
+        <h3>Rearrange the words below to form a chain of compound words</h3>
+  <div id="imageListId">
 {{#each wordsArray}}
   <div id="blockno{{@index}}" class="listitemClass">
     {{#if this}}
@@ -7,3 +11,18 @@
     {{/if}}
   </div>
 {{/each}}
+ </div>
+ 
+ <div id="outputDiv">
+      <input id="outputvalues" type="text" value="" />
+      <button id="submit-button">Submit</button>
+    </div>
+
+     <div id="correct-order" class="hidden">{{correctOrder}}</div>
+      <div id="blank-word" class="hidden">{{blankWord}}</div>
+
+    <div id="results-container"></div>
+
+   
+
+     
