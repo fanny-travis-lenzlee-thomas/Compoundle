@@ -1,6 +1,8 @@
 :root {
   --primary: #77DDF9;
   --secondary: #FFA0A3;
+  --tertiary: #899499;
+  --quatrinary: #6c6b67;
   --light: #EAFBFF;
   --dark: #414953;
   --error: red;
@@ -30,6 +32,11 @@ nav a {
   padding: 10px 10px;
   text-decoration: none;
   text-align: center;
+}
+
+nav a:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
 }
 
 aside {
@@ -79,7 +86,7 @@ aside {
 
 #submit-button {
   margin: 10px;
-  background-color: var(--dark);
+  background-color: var(--tertiary);
   border-radius: var(--border-radius);
   color: var(--light);
   font-family: 'Inconsolata', monospace;
@@ -116,3 +123,131 @@ aside {
   color: var(--light);
 }
 
+
+.hidden {display: none;}
+
+/* CARDS */
+.card {
+  margin: 20px;
+  flex: 0 1 300px;
+  border: 7px double var(--dark);
+  border-radius: 10px;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.card header {
+  color: var(--light);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  background-color: var(--tertiary);
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* FORM */
+
+form {
+  width: 100%;
+}
+
+form .form-group {
+  display: block;
+  width: 100%;
+  margin: 0.625rem 0;
+}
+
+form .form-input,
+form .form-textarea {
+  display: block;
+}
+
+form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 50%;
+}
+
+form label,
+form .form-label {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin: 0.625rem 0 0.25rem 0.3rem;
+}
+
+form .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  margin: 0.625rem 0;
+  font-size: 1.2rem;
+  border: 1px solid #484848;
+  border-radius: 0.3rem;
+}
+
+form .form-input.form-input-squared {
+  border-radius: 0;
+}
+
+form [type='checkbox'],
+form [type='radio'] {
+  display: inline-block;
+}
+
+label form [type='checkbox'], label
+form [type='radio'] {
+  display: inline-block;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+.maincontent {
+  flex: 4;
+  background-color: #fff;
+  padding: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
