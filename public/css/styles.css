@@ -178,6 +178,10 @@ form select {
   background-position-y: 50%;
 }
 
+
+.hidden {
+  display: none;
+
 form label,
 form .form-label {
   display: inline-block;

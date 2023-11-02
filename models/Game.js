@@ -27,6 +27,10 @@ Game.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    level: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     sequelize,
