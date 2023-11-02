@@ -1,9 +1,9 @@
 {{#each wordsArray}}
   <div id="blockno{{@index}}" class="listitemClass">
     {{#if this}}
-      <h5>{{this}}</h5>
+      <h2>{{this}}</h2>
     {{else}}
-      <h5><input id="guess-box" /></h5>
+      <h2><input id="guess-box" /></h2>
     {{/if}}
   </div>
 {{/each}}

@@ -1,18 +1,20 @@
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rearranger</title>
-    <link rel="stylesheet" text="text/css" href="/css/styles.css" />
-    <link
-      href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-      rel="stylesheet"
-    />
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rearranger</title>
+  <link rel="stylesheet" text="text/css" href="/css/styles.css" />
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@300;400&family=Russo+One&display=swap"
+    rel="stylesheet">
 
-  </head>
+</head>
 
   <body>
     <header>
@@ -33,23 +35,25 @@
       </aside>
       <div class="rearranger">
         <div id="imageListId">
+        {{{body}}}
+      </div>
 
-          {{{body}}}
-        </div>
-      </div>
-      <div id="outputDiv">
-        <input id="outputvalues" type="text" value="" />
-        <button id="submit-button">Submit</button>
-      </div>
-      <div id="results-container"></div>
+    </div>
+    <div id="outputDiv">
+      <input id="outputvalues" type="text" value="" />
+      <button id="submit-button">Submit</button>
+    </div>
+    <div id="results-container"></div>
+
       <div id="correct-order" class="hidden">{{correctOrder}}</div>
       <div id="blank-word" class="hidden">{{blankWord}}</div>
 
-    </main>
-    {{#if loggedIn}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-    <script src="/js/script.js"></script>
-  </body>
+
+  </main>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="/js/script.js"></script>
+</body>
 
 </html>
