@@ -85,11 +85,13 @@ function checkAnswer(blankWord, correctOrder) {
 }
 
 $(function () {
-  $("#imageListId").sortable({
-    update: function (event, ui) {
-      getIdsOfBlocks();
-    },
-  });
+  $("#imageListId")
+    .sortable({
+      update: function (event, ui) {
+        getIdsOfBlocks();
+      },
+    })
+    .disableSelection();
 });
 
 function updateScoreOnServer(newScore, nextLevel, userId) {
