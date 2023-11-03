@@ -23,13 +23,14 @@ Game.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    score: {
+    points: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     level: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: true,
     },
   },
   {
