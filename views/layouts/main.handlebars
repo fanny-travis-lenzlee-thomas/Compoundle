@@ -1,20 +1,25 @@
 <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rearranger</title>
-  <link rel="stylesheet" text="text/css" href="/css/styles.css" />
-  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@300;400&family=Russo+One&display=swap"
-    rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rearranger</title>
+    <link rel="stylesheet" text="text/css" href="/css/styles.css" />
+    <link
+      href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@300;400&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/favicon.png" id="icon" />
 
-</head>
+  </head>
 
   <body>
     <header>
@@ -30,20 +35,17 @@
       {{/if}}
     </nav>
     <main>
-        
 
       <div class="maincontent">
-    
 
         {{{body}}}
 
-    </div>
-   
+      </div>
 
-  </main>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+    </main>
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
 
 </html>
