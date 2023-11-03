@@ -29,7 +29,7 @@ outputArray = outputField.value.split(",").map(Number);
 console.log(typeof nextLevel);
 console.log("The next level is", nextLevel);
 
-function getIdsOfImages() {
+function getIdsOfBlocks() {
   var values = [];
   $(".listitemClass").each(function (index) {
     values.push($(this).attr("id").replace("blockno", ""));
@@ -87,7 +87,7 @@ function checkAnswer(blankWord, correctOrder) {
 $(function () {
   $("#imageListId").sortable({
     update: function (event, ui) {
-      getIdsOfImages();
+      getIdsOfBlocks();
     },
   });
 });
