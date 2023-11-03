@@ -1,10 +1,17 @@
-
 {{#if loggedIn}}
-  <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
-{{else}}
-  <button id="submit-button"><a href="game/1">Start Game</a></button>
-{{/if}}
 
+{{#unless currentLevel}}
+    <h3 class="warning">WARNING!!!</h3>
+  <button id="submit-button"><a href="game/1">Start Game</a></button>
+  
+{{else}}
+<button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
+ {{/unless}}
+
+{{else}}
+    <button id="submit-button"><a href="game/1">Start Game 1</a></button>
+  
+{{/if}}
 
 <h2>How To Play:</h2>
 
