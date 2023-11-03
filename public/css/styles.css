@@ -1,6 +1,6 @@
 :root {
   --primary: #77ddf9;
-  --secondary: #ffa0a3;
+  --secondary: #8fbc8f;
   --tertiary: #899499;
   --quatrinary: #6c6b67;
   --success: lightgreen;
@@ -130,8 +130,9 @@ nav a:hover {
   color: var(--light);
 }
 
-
-.hidden {display: none;}
+.hidden {
+  display: none;
+}
 
 /* CARDS */
 .card {
@@ -152,7 +153,7 @@ nav a:hover {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick; */
-  background-color: #71797E;
+  background-color: #71797e;
   color: var(--light);
   display: inline-grid;
 }
@@ -191,7 +192,6 @@ form .form-textarea {
   display: block;
 }
 
-
 .hidden {
   display: none;
 }
@@ -215,7 +215,6 @@ form select {
   background-position-x: 98%;
   background-position-y: 50%;
 }
-
 
 form label,
 form .form-label {
