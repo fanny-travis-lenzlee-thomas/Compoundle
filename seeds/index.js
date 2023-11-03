@@ -1,12 +1,17 @@
 const sequelize = require('../config/connection');
+
 const seedGames = require('./gameData');
-const seedUsers = require('./userData');
+const seedUser = require('./userData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
+  console.log("\n----- Database Synced -----\n");
 
   await seedGames();
-  await seedUsers();
+  console.log("\n----- Game Seeded -----\n");
+
+  await seedUser();
+  console.log("\n----- User Seeded -----\n");
 
   process.exit(0);
 };
