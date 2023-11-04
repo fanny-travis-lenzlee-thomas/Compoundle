@@ -1,4 +1,3 @@
-const sequelize = require("../config/connection");
 const Game = require("../models/Game");
 
 const gameData = [
@@ -172,22 +171,5 @@ const gameData = [
   },
 ];
 
-// I believe the below is redundant code for this setup but I am not sure.
-// const seedGameTable = () => Game.bulkCreate(gameData);
-
-//I think this is the correct code.
-const seedGameTable = async () => {
-  await sequelize.sync({ force: true });
-
-  await Game.bulkCreate(gameData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  process.exit(0);
-};
-
-seedGameTable();
-
-//I also do not believe we need to export the seedGameTable function. I believe that is for if seeding code is in multiple files and controlled via a central index.
-// module.exports = seedGameTable;
+const seedGameTable = () => Game.bulkCreate(gameData);
+module.exports = seedGameTable;
