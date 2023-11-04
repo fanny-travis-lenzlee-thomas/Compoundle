@@ -1,4 +1,7 @@
 const outputField = document.querySelector("#outputvalues");
+const howToPlayInstructions = document.querySelector(
+  "#how-to-play-instructions"
+);
 const submitButton = document.querySelector("#submit-button");
 const guessBox = document.querySelector("#guess-box");
 const resultsContainer = document.querySelector("#results-container");
@@ -161,6 +164,17 @@ function updateScoreOnServer(newScore, nextLevel, userId) {
       console.error("Error updating score:", error);
     });
 }
+
+//Function that adds instructions for the blank word portion
+function isDemoLevel() {
+  if (nextLevel === 17) {
+    howToPlayInstructions.textContent =
+      "Fill in the blank word to complete the chain";
+  }
+}
+
+getIdsOfBlocks();
+isDemoLevel();
 
 //Event listener on the submit button
 submitButton.addEventListener("click", async function () {
