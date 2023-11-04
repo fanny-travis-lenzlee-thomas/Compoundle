@@ -2,21 +2,21 @@ const Game = require("../models/Game");
 
 const gameData = [
   {
-    words: "Off, Hats, Top",
-    correct_order: "2,1,0",
+    words: "Belly, Beer, Flop",
+    correct_order: "1,0,2",
     hidden_word: null,
     points: 300,
     level: 1,
   },
   {
-    words: "Same, Man, Old",
-    correct_order: "0,2,1",
+    words: "Stakes, Sweep, Chimney",
+    correct_order: "2,1,0",
     hidden_word: null,
     points: 300,
     level: 2,
   },
   {
-    words: "Belly, Beer, Flop",
+    words: "Variety, Garden, Show",
     correct_order: "1,0,2",
     hidden_word: null,
     points: 300,

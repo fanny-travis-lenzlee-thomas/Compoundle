@@ -23,13 +23,13 @@
 
   <body>
     <header>
-      <h1><a href="/" title="Rearranger">Rearranger</a></h1>
+      <h1 id="header"><a href="/" title="Rearranger">Rearranger</a></h1>
     </header>
     <nav>
-      <a href="/">Home</a>
+      {{! <a href="/">Home</a> }}
       {{#if loggedIn}}
         <a id="logout">Logout</a>
-        <h1> Welcome, {{username}}!</h1>
+        <h1 id="username-welcome"> Welcome, {{username}}!</h1>
       {{else}}
         <a href="/login">Login</a>
       {{/if}}
@@ -41,7 +41,9 @@
         {{{body}}}
 
       </div>
-
+      <footer><a href="https://github.com/fanny-travis-lenzlee-thomas">Group
+          Name | © 2023</a>
+        <div id="confettiContainer"></div></footer>
     </main>
     {{#if loggedIn}}
       <script src="/js/logout.js"></script>

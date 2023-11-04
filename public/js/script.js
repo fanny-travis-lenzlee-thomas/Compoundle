@@ -14,21 +14,18 @@ const correctOrder = correctOrderBlock.textContent;
 const nextLevel = parseInt(currentLevelBlock.textContent, 10) + 1;
 const points = parseInt(pointsBlock.textContent, 10);
 const userId = parseInt(userIdBlock.textContent, 10);
+let newScore;
 
+correctAnswerArray = correctOrder.split(",").map(Number);
+
+//Gets current score if it exists, or sets it to 0
 if (currentScoreBlock.textContent > 0) {
   currentScore = parseInt(currentScoreBlock.textContent, 10);
 } else {
   currentScore = 0;
 }
 
-console.log("The current score is, ", currentScore);
-console.log("This level is worth this many points: ", points);
-
-outputArray = outputField.value.split(",").map(Number);
-
-console.log(typeof nextLevel);
-console.log("The next level is", nextLevel);
-
+//Function that gets the ID of each block
 function getIdsOfBlocks() {
   var values = [];
   $(".listitemClass").each(function (index) {
@@ -38,13 +35,27 @@ function getIdsOfBlocks() {
 }
 
 function checkAnswer(blankWord, correctOrder) {
+  //Promise that checks the order for correctness
   return new Promise((resolve) => {
-    console.log("the outputfield value is, ", outputField.value);
-    console.log("The output array is", outputArray);
-    console.log("The nexxt level is,", nextLevel);
-
+    //Getting arrays of user order and correct order to check correctness
+    outputString = outputField.value;
+    var outputArray = outputString.split(",").map(Number);
     let isCorrect = false;
+    //For loop that checks the position of each block and adds a background color depending on its correctness
+    for (var i = 0; i < correctAnswerArray.length; i++) {
+      var elements = document.getElementsByClassName("listitemClass");
+      var element = elements[i];
+      element.addEventListener("mousedown", resetColors);
+      if (outputArray[i] == correctAnswerArray[i]) {
+        console.log(`Position ${i} is correct`);
+        element.style.backgroundColor = "var(--success-1)";
+      } else {
+        console.log(`Position ${i} is incorrect`);
+        element.style.backgroundColor = "var(--error)";
+      }
+    }
 
+    //Checks if the level includes a blank word or not, and updates the criteria for a correct response accordingly.
     if (blankWord) {
       isCorrect =
         outputField.value === correctOrder &&
@@ -53,11 +64,13 @@ function checkAnswer(blankWord, correctOrder) {
       isCorrect = outputField.value === correctOrder;
     }
 
+    //HTML edits for a correct answer.
     if (isCorrect) {
       var winningResult = document.createElement("h1");
       var nextLevelButton = document.createElement("button");
       var nextLevelAnchor = document.createElement("a");
       winningResult.textContent = "You Win!";
+      winningResult.id = "you-win";
       nextLevelButton.textContent = "Next Level";
       nextLevelAnchor.href = `/game/${nextLevel}`;
       nextLevelButton.id = "next-level-button";
@@ -66,13 +79,31 @@ function checkAnswer(blankWord, correctOrder) {
       resultsContainer.appendChild(winningResult);
       nextLevelAnchor.appendChild(nextLevelButton);
       resultsContainer.appendChild(nextLevelAnchor);
+
+      //Create the elements for the confetti animation
+      var confettiContainer = document.getElementById("confettiContainer");
+      for (var i = 0; i < 13; i++) {
+        var confettiPiece = document.createElement("div");
+        confettiPiece.className = "confetti-piece";
+        confettiContainer.appendChild(confettiPiece);
+      }
+      resultsContainer.appendChild(confettiContainer);
+
       submitButton.remove();
       nextLevelButton.addEventListener("click", function () {
         window.location.href = nextLevelButton.href;
       });
+
+      if (nextLevel === 25) {
+        nextLevelButton.remove();
+        winningResult.textContent =
+          "You beat all the levels! Congratulations! ";
+      }
+      //HTML edits for an incorrect answer.
     } else {
-      console.log("Something isn't right...");
       var losingResult = document.createElement("h1");
+      losingResult.id = "losing-result";
+      losingResult.display = "inline-block";
       losingResult.textContent = "Something Isn't Right...";
       resultsContainer.appendChild(losingResult);
       setTimeout(() => {
@@ -84,6 +115,16 @@ function checkAnswer(blankWord, correctOrder) {
   });
 }
 
+//Function that resest the colors of the blocks after a guess.
+function resetColors() {
+  var elements = document.getElementsByClassName("listitemClass");
+
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.backgroundColor = "var(--secondary)";
+  }
+}
+
+//Function for rearranging the wordblocks
 $(function () {
   $("#imageListId")
     .sortable({
@@ -95,10 +136,7 @@ $(function () {
 });
 
 function updateScoreOnServer(newScore, nextLevel, userId) {
-  console.log("This is the new score, ", newScore);
-  console.log("This is the next level", nextLevel);
-  console.log("This is the user Id, ", userId);
-  // Update the user's score
+  // Updates the user's score via a put request
   fetch(`/api/users/${userId}`, {
     method: "PUT",
     headers: {
@@ -118,13 +156,10 @@ function updateScoreOnServer(newScore, nextLevel, userId) {
     });
 }
 
+//Event listener on the submit button
 submitButton.addEventListener("click", async function () {
   await checkAnswer(blankWord, correctOrder);
   updateScoreOnServer(newScore, nextLevel, userId);
 
   console.log("I've been clicked!");
 });
-
-correctAnswerArray = correctOrder.split(",").map(Number);
-
-console.log("The correct Answer Array is, ", correctAnswerArray);

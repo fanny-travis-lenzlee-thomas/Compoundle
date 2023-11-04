@@ -26,7 +26,9 @@ In this project, our team was asked to design and build an Interactive Full-Stac
   utils/helpers.js
   views/login.handlebars
 
-- sorting function (public/js/script.js lines 87-93), and getIdOfBlock functions (public/js/script.js lines 32-38) leveraged and modified from GeeksForGeeks.org user geetanjali16 (https://www.geeksforgeeks.org/how-to-create-a-drag-and-drop-feature-for-reordering-the-images-using-html-css-and-jqueryui/)
+- Sorting function (public/js/script.js lines 87-93), and getIdOfBlock functions (public/js/script.js lines 32-38) leveraged and modified from GeeksForGeeks.org user geetanjali16 (https://www.geeksforgeeks.org/how-to-create-a-drag-and-drop-feature-for-reordering-the-images-using-html-css-and-jqueryui/)
+
+- Confetti CSS Stylings and Animation (public/css/styles.css lines 367-509) leveraged and modified from codepen.io user zer0kool (https://codepen.io/zer0kool/pen/KjZWRW)
 
 - MDN web docs for reference when using methods and functions
 
