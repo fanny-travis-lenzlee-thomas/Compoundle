@@ -1,7 +1,6 @@
 {{#if loggedIn}}
 
   {{#unless currentLevel}}
-    <h3 class="warning">WARNING!!!</h3>
     <button id="submit-button"><a href="game/1">Start Game</a></button>
 
   {{else}}
@@ -9,14 +8,16 @@
   {{/unless}}
 
 {{else}}
-  <button id="submit-button"><a href="game/1">Start Game 1</a></button>
+  <button id="submit-button"><a href="game/1">Start Game</a></button>
 
 {{/if}}
 
-<h2>How To Play:</h2>
+<div>
+  <h2>How To Play:</h2>
 
-<p>Rearrange the word blocks to form a chain of compound words and click submit.</p>
-
+  <p>Rearrange the word blocks to form a chain of compound words and click
+    submit.</p>
+</div>
 <iframe
   width="420"
   height="345"
