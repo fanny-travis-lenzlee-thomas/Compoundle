@@ -47,11 +47,16 @@ function checkAnswer(blankWord, correctOrder) {
       var element = elements[i];
       element.addEventListener("mousedown", resetColors);
       if (outputArray[i] == correctAnswerArray[i]) {
+        element.classList.add("flip");
+        element.style.animationDelay = `${i * 100}ms`;
         console.log(`Position ${i} is correct`);
         element.style.backgroundColor = "var(--success-1)";
       } else {
+        element.classList.add("flip");
+        element.style.animationDelay = `${i * 100}ms`;
         console.log(`Position ${i} is incorrect`);
         element.style.backgroundColor = "var(--error)";
+        element.remov;
       }
     }
 
@@ -120,6 +125,7 @@ function resetColors() {
   var elements = document.getElementsByClassName("listitemClass");
 
   for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.remove("flip");
     elements[i].style.backgroundColor = "var(--secondary)";
   }
 }

@@ -26,7 +26,9 @@ In this project, our team was asked to design and build an Interactive Full-Stac
   utils/helpers.js
   views/login.handlebars
 
-- Sorting function (public/js/script.js lines 87-93), and getIdOfBlock functions (public/js/script.js lines 32-38) leveraged and modified from GeeksForGeeks.org user geetanjali16 (https://www.geeksforgeeks.org/how-to-create-a-drag-and-drop-feature-for-reordering-the-images-using-html-css-and-jqueryui/)
+- Sorting function (public/js/script.js lines 87-93), and getIdOfBlock functions (public/js/script.js lines 32-38) leveraged and modified from GeeksForGeeks.org user geetanjali16 (https://www.geeksforgeeks.org/how-to-create-a-drag-and-drop-feature-for-reordering-the-images-,using-html-css-and-jqueryui/)
+
+- flip CSS Animation (public/js/styles.css 492-494, 509,521) leveraged and modified from user Fralle on StackOverFlow (https://stackoverflow.com/questions/74192108/wordle-letter-flipping-animation)
 
 - Confetti CSS Stylings and Animation (public/css/styles.css lines 367-509) leveraged and modified from codepen.io user zer0kool (https://codepen.io/zer0kool/pen/KjZWRW)
 
