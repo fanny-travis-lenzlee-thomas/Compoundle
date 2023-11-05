@@ -521,34 +521,24 @@ button,
 }
 
 
-keyframes fadeIn 
 
-@media all and (min-width: 472px) and (max-width: 650px) {
-  #losing-result {
-    width: 150px;
-    font-size: 1.2rem;
-  }
-  #you-win {
-    width: 150px;
-    font-size: 1.2rem;
-  }
-  .listitemClass {
-    width: 100px;
-  }
-}
 
-@media all and (max-width: 472px) {
+@media all and (max-width: 652px) {
   h1 a {
     font-size: 50px;
   }
-  
+
   #losing-result {
     width: 150px;
     font-size: 1.2rem;
   }
+  
+  .listitemClass {
+    width: 100px;
+  }
+  
   #you-win {
-    width: 150px;
-    font-size: 1.2rem;
+    width: 170px;
   }
 }
 
