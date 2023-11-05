@@ -38,6 +38,7 @@ function getIdsOfBlocks() {
 }
 
 function checkAnswer(blankWord, correctOrder) {
+  //Checks if there is already a losing-result element, and if there is, removes it.
   var existingLosingResult = document.getElementById("losing-result");
   if (existingLosingResult) {
     resultsContainer.removeChild(existingLosingResult);
@@ -108,7 +109,7 @@ function checkAnswer(blankWord, correctOrder) {
         window.location.href = nextLevelButton.href;
       });
 
-      if (nextLevel === 25) {
+      if (nextLevel === 26) {
         nextLevelButton.remove();
         winningResult.textContent =
           "You beat all the levels! Congratulations! ";
