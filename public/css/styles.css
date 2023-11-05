@@ -489,6 +489,11 @@ button,
   background: var(--error);
 }
 
+.flip {
+  animation: flip 500ms ease forwards;
+}
+
+
 @-webkit-keyframes makeItRain {
   from {
     opacity: 0;
@@ -500,6 +505,21 @@ button,
     -webkit-transform: translateY(350px);
   }
 }
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
 
 keyframes fadeIn 
 
