@@ -1,12 +1,14 @@
-# Rearranger
+## Rearranger
 
-Bootcamp Project 2: Model-View-Controller (MVC) Challenge
+Rearranger is an engaging word game built with JavaScript, Node.js, Express, and MySQL. Challenge yourself to create chains of compound words and phrases, and track your scores by creating user profiles.
 
-## Description
+## Overview
 
-In this project, our team was asked to design and build an Interactive Full-Stack App using the MVC paradigm, create our own server-side API, add user authentication, and connect to a database. We were also asked to deploy our full-stack web application to Heroku.
+This application offers an interactive experience where users can sign up or start playing immediately. Rearrange the words on the screen to form compound words or phrases with neighboring words (e.g., "Big Bird Seed" becomes Big Bird, Bird Seed). Verify your answers with the check button, and correct placements are highlighted in green, while incorrect ones are in red. Fill in blank spaces with the appropriate words for a seamless gaming experience.
 
-## URLs submitted:
+## Screenshots
+
+## Application Links:
 
 - GITHUB Repo: https://github.com/fanny-travis-lenzlee-thomas/rearranger-working
 
@@ -42,27 +44,26 @@ In this project, our team was asked to design and build an Interactive Full-Stac
 
 - Node.js: https://nodejs.org/en/docs
 
-## Requirements:
+# License
 
-- Use Node.js and Express.js to create a RESTful API.
-- Use Handlebars.js as the template engine.
-- Use MySQL and the Sequelize ORM for the database.
-- Have both GET and POST routes for retrieving and adding new data.
-- Use at least one new library, package, or technology that we haven’t discussed.
-- Have a folder structure that meets the MVC paradigm.
-- Include authentication (express-session and cookies).
-- Protect API keys and sensitive information with environment variables.
-- Be deployed using Heroku (with data).
-- Have a polished UI.
-- Be responsive.
-- Be interactive (in other words, accept and respond to user input).
-- Meet good-quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, and so on).
-- Have a professional README (with unique name, description, technologies used, screenshot, and link to deployed application).
+MIT License
 
-## Acceptance Criteria:
+Copyright (c) 2023 fanny-travis-lenzlee-thomas
 
-<< acceptance criteria about our app goes here >>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Screenshots:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-<< app screenshots go here >>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
