@@ -38,12 +38,18 @@ function getIdsOfBlocks() {
 }
 
 function checkAnswer(blankWord, correctOrder) {
+  var existingLosingResult = document.getElementById("losing-result");
+  if (existingLosingResult) {
+    resultsContainer.removeChild(existingLosingResult);
+  }
+
   //Promise that checks the order for correctness
   return new Promise((resolve) => {
     //Getting arrays of user order and correct order to check correctness
     outputString = outputField.value;
     var outputArray = outputString.split(",").map(Number);
     let isCorrect = false;
+
     //For loop that checks the position of each block and adds a background color depending on its correctness
     for (var i = 0; i < correctAnswerArray.length; i++) {
       var elements = document.getElementsByClassName("listitemClass");
@@ -114,9 +120,6 @@ function checkAnswer(blankWord, correctOrder) {
       losingResult.display = "inline-block";
       losingResult.textContent = "Something Isn't Right...";
       resultsContainer.appendChild(losingResult);
-      setTimeout(() => {
-        resultsContainer.removeChild(losingResult);
-      }, 2000);
     }
 
     resolve(isCorrect);
@@ -126,6 +129,11 @@ function checkAnswer(blankWord, correctOrder) {
 //Function that resest the colors of the blocks after a guess.
 function resetColors() {
   var elements = document.getElementsByClassName("listitemClass");
+  var losingResultElement = document.getElementById("losing-result");
+  if (losingResultElement) {
+    // If it exists, remove it
+    losingResultElement.remove();
+  }
 
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove("flip");
