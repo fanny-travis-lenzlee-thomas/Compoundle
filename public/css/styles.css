@@ -77,7 +77,7 @@ nav a:hover {
   width: 50px;
 }
 
-#guess-box {
+.guess-box {
   text-align: center;
   background-color: transparent;
   font: inherit;
@@ -85,6 +85,28 @@ nav a:hover {
   border-color: var(--dark);
   box-sizing: content-box;
   width: 90%;
+}
+
+#former-guess-box {
+  text-align: center;
+  background-color: transparent;
+  font: inherit;
+  border-width: 0 0 1;
+  border-color: var(--dark);
+  box-sizing: content-box;
+  width: 90%;
+  touch-action: manipulation;
+}
+
+.mobile-guess-box {
+  text-align: center;
+  background-color: transparent;
+  font: inherit;
+  border-width: 0 0 1;
+  border-color: var(--dark);
+  box-sizing: content-box;
+  width: 90%;
+  margin: 5px;
 }
 
 #submit-button {
@@ -519,6 +541,7 @@ button,
     transform: scaleY(1);
   }
 }
+
 
 
 

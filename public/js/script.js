@@ -4,6 +4,7 @@ const howToPlayInstructions = document.querySelector(
 );
 const submitButton = document.querySelector("#submit-button");
 const guessBox = document.querySelector("#guess-box");
+
 const resultsContainer = document.querySelector("#results-container");
 const correctOrderBlock = document.querySelector("#correct-order");
 const currentLevelBlock = document.querySelector("#current-level");
@@ -11,8 +12,12 @@ const currentScoreBlock = document.querySelector("#score-line");
 const blankWordBlock = document.querySelector("#blank-word");
 const pointsBlock = document.querySelector("#points-line");
 const userIdBlock = document.querySelector("#user-id-line");
+const mobileDiv = document.querySelector("#mobile-div");
 
 const blankWord = blankWordBlock.textContent;
+const capitalizedBlankWord =
+  blankWord.charAt(0).toUpperCase() + blankWord.slice(1);
+
 const correctOrder = correctOrderBlock.textContent;
 const nextLevel = parseInt(currentLevelBlock.textContent, 10) + 1;
 const points = parseInt(pointsBlock.textContent, 10);
@@ -20,6 +25,13 @@ const userId = parseInt(userIdBlock.textContent, 10);
 let newScore;
 
 correctAnswerArray = correctOrder.split(",").map(Number);
+//checks if the user is playing on mobile
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+//If they are, adds the blank word to the guess box as currently the jquery we are using does not support input boxes.
+if (isMobile) {
+  guessBox.value = capitalizedBlankWord;
+}
 
 //Gets current score if it exists, or sets it to 0
 if (currentScoreBlock.textContent > 0) {
@@ -39,6 +51,7 @@ function getIdsOfBlocks() {
 
 function checkAnswer(blankWord, correctOrder) {
   //Checks if there is already a losing-result element, and if there is, removes it.
+
   var existingLosingResult = document.getElementById("losing-result");
   if (existingLosingResult) {
     resultsContainer.removeChild(existingLosingResult);
@@ -59,14 +72,11 @@ function checkAnswer(blankWord, correctOrder) {
       if (outputArray[i] == correctAnswerArray[i]) {
         element.classList.add("flip");
         element.style.animationDelay = `${i * 100}ms`;
-        console.log(`Position ${i} is correct`);
         element.style.backgroundColor = "var(--success-1)";
       } else {
         element.classList.add("flip");
         element.style.animationDelay = `${i * 100}ms`;
-        console.log(`Position ${i} is incorrect`);
         element.style.backgroundColor = "var(--error)";
-        element.remov;
       }
     }
 
@@ -189,6 +199,4 @@ isDemoLevel();
 submitButton.addEventListener("click", async function () {
   await checkAnswer(blankWord, correctOrder);
   updateScoreOnServer(newScore, nextLevel, userId);
-
-  console.log("I've been clicked!");
 });
