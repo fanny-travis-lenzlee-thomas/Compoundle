@@ -119,7 +119,7 @@ function checkAnswer(blankWord, correctOrder) {
         window.location.href = nextLevelButton.href;
       });
 
-      if (nextLevel === 26) {
+      if (nextLevel === 65) {
         nextLevelButton.remove();
         winningResult.textContent =
           "You beat all the levels! Congratulations! ";
