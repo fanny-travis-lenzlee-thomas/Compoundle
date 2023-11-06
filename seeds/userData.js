@@ -20,6 +20,6 @@ const userData = [
 
 const seedUser = () => User.bulkCreate(userData);
 
-seedUserTable();
+seedUser();
 
 module.exports = seedUser;
