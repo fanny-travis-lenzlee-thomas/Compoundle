@@ -384,7 +384,7 @@ const gameData = [
     level: 54,
   },
   {
-    words: "Up, Security,, Front, Times, Good, Desk",
+    words: "Up, Security, , Front, Times, Good, Desk",
     correct_order: "5,4,0,3,6,2,1",
     hidden_word: "job",
     points: 1000,
