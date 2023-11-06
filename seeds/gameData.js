@@ -400,7 +400,7 @@ const gameData = [
   {
     words: "Greco, Roman, Stick, Figure, Drawing, Board, ",
     correct_order: "0,1,6,2,3,4,5",
-    hidden_word: "Candle",
+    hidden_word: "candle",
     points: 1000,
     level: 57,
   },
@@ -456,5 +456,7 @@ const gameData = [
 ];
 
 const seedGameTable = () => Game.bulkCreate(gameData);
+
+seedGameTable();
 
 module.exports = seedGameTable;
