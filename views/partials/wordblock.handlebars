@@ -11,11 +11,12 @@
         {{#if this}}
           <h2>{{this}}</h2>
         {{else}}
-          <h2><input id="guess-box" /></h2>
+          <h2><input id="guess-box" class="guess-box" /></h2>
         {{/if}}
       </div>
     {{/each}}
   </div>
+  <div id="mobile-div"></div>
   {{#if score}}
     <div id="score-div">Current Score:
       <span id="score-line">{{score}}</span></div>
@@ -38,6 +39,3 @@
 </div>
 
 <script src="/js/script.js"></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
-></script>
