@@ -33,7 +33,14 @@ router.get("/", async (req, res) => {
 router.get("/game/:id", async (req, res) => {
   try {
     const dbGameData = await Game.findByPk(req.params.id, {
-      attributes: ["id", "words", "correct_order", "hidden_word", "points"],
+      attributes: [
+        "id",
+        "words",
+        "correct_order",
+        "hidden_word",
+        "points",
+        "level",
+      ],
     });
 
     const game = dbGameData.get({ plain: true });

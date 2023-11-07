@@ -1,23 +1,22 @@
-const sequelize = require("../config/connection");
 const Game = require("../models/Game");
 
 const gameData = [
   {
-    words: "Off, Hats, Top",
-    correct_order: "2,1,0",
+    words: "Belly, Beer, Flop",
+    correct_order: "1,0,2",
     hidden_word: null,
     points: 300,
     level: 1,
   },
   {
-    words: "Same, Man, Old",
-    correct_order: "0,2,1",
+    words: "Stakes, Sweep, Chimney",
+    correct_order: "2,1,0",
     hidden_word: null,
     points: 300,
     level: 2,
   },
   {
-    words: "Belly, Beer, Flop",
+    words: "Variety, Garden, Show",
     correct_order: "1,0,2",
     hidden_word: null,
     points: 300,
@@ -108,86 +107,356 @@ const gameData = [
     level: 15,
   },
   {
+    words: "Swimming, , Table",
+    correct_order: "0,1,2",
+    hidden_word: "pool",
+    points: 700,
+    level: 16,
+  },
+  {
     words: "Dancer, Mister, , Hey, Bean, Peanut, Pole",
     correct_order: "3,1,5,2,4,6,0",
     hidden_word: "butter",
     points: 1000,
-    level: 16,
+    level: 17,
   },
   {
     words: "Flash, Game, Woman, Card, Boy, Board, ",
     correct_order: "0,3,5,1,4,6,2",
     hidden_word: "wonder",
     points: 1000,
-    level: 17,
+    level: 18,
   },
   {
     words: "High, Stadium, Area, Flying, Seating, , Fantasy",
     correct_order: "3,0,6,5,1,4,2",
     hidden_word: "football",
     points: 1000,
-    level: 18,
+    level: 19,
   },
   {
     words: "Lava, Bad, Red, Blood, , Hot, Shade",
     correct_order: "1,3,2,5,0,4,6",
     hidden_word: "lamp",
     points: 1000,
-    level: 19,
+    level: 20,
   },
   {
     words: ", People, Down, Square, Low, Party, Dance",
     correct_order: "4,2,0,3,6,5,1",
     hidden_word: "town",
     points: 1000,
-    level: 20,
+    level: 21,
   },
   {
     words: "Hole, Yellow, Walk, Belly, , Man, Fat",
     correct_order: "1,3,6,4,2,5,0",
     hidden_word: "cat",
     points: 1000,
-    level: 21,
+    level: 22,
   },
   {
     words: "Banana, , Phone, Case, Cabinet, File, Storage",
     correct_order: "0,2,1,3,5,6,4",
     hidden_word: "book",
     points: 1000,
-    level: 22,
+    level: 23,
   },
   {
     words: "Lands, Step, Zone, Bad, Breaking, , End",
     correct_order: "1,5,4,3,0,6,2",
     hidden_word: "back",
     points: 1000,
-    level: 23,
+    level: 24,
   },
   {
     words: "Sugar, Candy, Daddy, Thick, , Cane, Issues",
     correct_order: "3,4,1,5,0,2,6",
     hidden_word: "skull",
     points: 1000,
-    level: 24,
+    level: 25,
+  },
+  {
+    words: "Front, Weather, , Door, Up, Mountain, Man",
+    correct_order: "5,6,4,0,3,2,1",
+    hidden_word: "bell",
+    points: 1000,
+    level: 26,
+  },
+  {
+    words: "Child, Man, Chart, Care, One, , Work",
+    correct_order: "4,1,0,3,6,5,2",
+    hidden_word: "flow",
+    points: 1000,
+    level: 27,
+  },
+  {
+    words: "Brush, Lay, , Low, Ring, Finger, Paint",
+    correct_order: "1,3,2,4,5,6,0",
+    hidden_word: "key",
+    points: 1000,
+    level: 28,
+  },
+  {
+    words: "Carrot, Walk, Tale, Tall, Newborn, Cake, ",
+    correct_order: "4,6,0,5,1,4,3",
+    hidden_word: "baby",
+    points: 1000,
+    level: 29,
+  },
+  {
+    words: "School, Prep, Trip, Time, Day, , Meal",
+    correct_order: "3,5,6,1,0,4,2",
+    hidden_word: "piece",
+    points: 1000,
+    level: 30,
+  },
+  {
+    words: "Golden, Card, Reader, Rule, Out, Side, ",
+    correct_order: "0,3,4,5,6,1,2",
+    hidden_word: "note",
+    points: 1000,
+    level: 31,
+  },
+  {
+    words: ", Cake, Walk, Stick, Yard, Golden, Back",
+    correct_order: "5,0,1,2,6,4,3",
+    hidden_word: "birthday",
+    points: 1000,
+    level: 32,
+  },
+  {
+    words: "Caps, , Tank, Top, Box, Out, Lock",
+    correct_order: "0,6,4,5,1,2,3",
+    hidden_word: "think",
+    points: 1000,
+    level: 33,
+  },
+  {
+    words: "Free, , Bird, Spirit, Cage, Black, Swan",
+    correct_order: "5,6,1,2,4,0,3",
+    hidden_word: "song",
+    points: 1000,
+    level: 34,
+  },
+  {
+    words: ", Yours, Home, Ball, Up, Smash, Hit",
+    correct_order: "5,6,2,0,3,4,1",
+    hidden_word: "base",
+    points: 1000,
+    level: 35,
+  },
+  {
+    words: "Cave, Harlem, Renaissance, Game, Board, Diving, ",
+    correct_order: "1,2,6,0,5,4,3",
+    hidden_word: "man",
+    points: 1000,
+    level: 36,
+  },
+  {
+    words: "Pen, , Brand, Loyal, Guinea, Name, New",
+    correct_order: "6,4,1,0,5,2,3",
+    hidden_word: "pig",
+    points: 1000,
+    level: 37,
+  },
+  {
+    words: "Basketball, True, , Ring, Crime, Professional, Consumate",
+    correct_order: "6,5,0,2,3,1,4",
+    hidden_word: "hoop",
+    points: 1000,
+    level: 38,
+  },
+  {
+    words: "Off, Bought, World, Department, , History, Old",
+    correct_order: "6,2,5,3,4,1,0",
+    hidden_word: "store",
+    points: 1000,
+    level: 39,
+  },
+  {
+    words: "Instrument, , Landing, Wind, Frozen, Never, Almost",
+    correct_order: "6,5,4,1,3,0,2",
+    hidden_word: "stiff",
+    points: 1000,
+    level: 40,
+  },
+  {
+    words: "Guitar, , String, Body, Electric, Celestial, Monger",
+    correct_order: "5,3,4,0,2,1,6",
+    hidden_word: "cheese",
+    points: 1000,
+    level: 41,
+  },
+  {
+    words: "Blower, Red, Attack, Whistle, Surprise, October, ",
+    correct_order: "1,5,4,2,6,3,0",
+    hidden_word: "dog",
+    points: 1000,
+    level: 42,
+  },
+  {
+    words: "Out, Income, , Creep, Supplementary, Maneuver, Bracket",
+    correct_order: "4,1,2,6,3,0,5",
+    hidden_word: "tax",
+    points: 1000,
+    level: 43,
+  },
+  {
+    words: "Book, , League, Burning, Life, Bush, Saving",
+    correct_order: "4,6,1,0,3,5,2",
+    hidden_word: "face",
+    points: 1000,
+    level: 44,
+  },
+  {
+    words: ", Iron, Think, Eater, Mind, You, Man",
+    correct_order: "4,5,2,0,1,6,3",
+    hidden_word: "big",
+    points: 1000,
+    level: 45,
+  },
+  {
+    words: "Down, Stream, , Put, Coffee, Shot, Regular",
+    correct_order: "6,4,2,5,3,0,1",
+    hidden_word: "mug",
+    points: 1000,
+    level: 46,
+  },
+  {
+    words: ", Exit, Fire, Shave, Up, Ramp, Open",
+    correct_order: "6,2,1,5,4,0,3",
+    hidden_word: "close",
+    points: 1000,
+    level: 47,
+  },
+
+  {
+    words: "Part, Demon, , Time, Warp, Speed, Double",
+    correct_order: "6,2,0,3,4,5,1",
+    hidden_word: "take",
+    points: 1000,
+    level: 48,
+  },
+
+  {
+    words: "Age, End, New, Year, , Tennis, Gap",
+    correct_order: "2,0,6,3,1,4,5",
+    hidden_word: "table",
+    points: 1000,
+    level: 49,
+  },
+
+  {
+    words: "Throat, White, Bowl, Egg, Rice, Cut, Goose",
+    correct_order: "6,3,1,4,2,5,0",
+    hidden_word: "cut",
+    points: 1000,
+    level: 50,
+  },
+
+  {
+    words: "Fluid, Dynamics, , Pocket, Dead, Lighter, Drop",
+    correct_order: "6,4,2,3,5,0,1",
+    hidden_word: "air",
+    points: 1000,
+    level: 51,
+  },
+  {
+    words: "Out, Buff, Fox, Movie, Comedy, , Hopeless",
+    correct_order: "6,5,4,3,1,0,2",
+    hidden_word: "romantic",
+    points: 1000,
+    level: 52,
+  },
+  {
+    words: "General, , Morning, Attorney, Good, Glory, Practicing",
+    correct_order: "6,3,0,1,4,2,5",
+    hidden_word: "public",
+    points: 1000,
+    level: 53,
+  },
+  {
+    words: "Culture, Deep, , Clash, Mole, Freeze, Pop",
+    correct_order: "4,2,1,5,6,0,3",
+    hidden_word: "skin",
+    points: 1000,
+    level: 54,
+  },
+  {
+    words: "Up, Security, , Front, Times, Good, Desk",
+    correct_order: "5,4,0,3,6,2,1",
+    hidden_word: "job",
+    points: 1000,
+    level: 55,
+  },
+  {
+    words: "Welfare, State, Play, Dead, Serious, , Minded",
+    correct_order: "0,1,5,2,3,4,6",
+    hidden_word: "fair",
+    points: 1000,
+    level: 56,
+  },
+  {
+    words: "Greco, Roman, Stick, Figure, Drawing, Board, ",
+    correct_order: "0,1,6,2,3,4,5",
+    hidden_word: "candle",
+    points: 1000,
+    level: 57,
+  },
+  {
+    words: "Tomb, Thai, Cold, Stone, Pad, Land, ",
+    correct_order: "0,3,2,6,4,1,5",
+    hidden_word: "shoulder",
+    points: 1000,
+    level: 58,
+  },
+  {
+    words: "Beer, Pure, Craft, , Bong, Maker, Pleasure",
+    correct_order: "1,6,2,0,4,3,5",
+    hidden_word: "hit",
+    points: 1000,
+    level: 59,
+  },
+  {
+    words: "Back, Herb, Unit, Garden, Message, , Away",
+    correct_order: "1,3,2,5,0,6,4",
+    hidden_word: "circle",
+    points: 1000,
+    level: 60,
+  },
+  {
+    words: "Jug, Down, Chug, Bad, Head, Vibes, ",
+    correct_order: "2,0,4,6,1,3,5",
+    hidden_word: "count",
+    points: 1000,
+    level: 61,
+  },
+  {
+    words: "Think, Unlikely, Highly, , Pair, Off, Beam",
+    correct_order: "0,2,1,4,5,3,6",
+    hidden_word: "balance",
+    points: 1000,
+    level: 62,
+  },
+  {
+    words: "Nurse, , Chip, Couch, Depth, Charge, In",
+    correct_order: "3,1,2,6,4,5,0",
+    hidden_word: "potato",
+    points: 1000,
+    level: 63,
+  },
+  {
+    words: "Deductible, Conspicuous, Tax, Amount, Dilligence, , Consumption",
+    correct_order: "1,6,2,0,3,5,4",
+    hidden_word: "due",
+    points: 1000,
+    level: 64,
   },
 ];
 
-// I believe the below is redundant code for this setup but I am not sure.
-// const seedGameTable = () => Game.bulkCreate(gameData);
-
-//I think this is the correct code.
-const seedGameTable = async () => {
-  await sequelize.sync({ force: true });
-
-  await Game.bulkCreate(gameData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  process.exit(0);
-};
+const seedGameTable = () => Game.bulkCreate(gameData);
 
 seedGameTable();
 
-//I also do not believe we need to export the seedGameTable function. I believe that is for if seeding code is in multiple files and controlled via a central index.
-// module.exports = seedGameTable;
+module.exports = seedGameTable;
