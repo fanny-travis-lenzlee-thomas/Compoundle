@@ -1,22 +1,24 @@
-## Rearranger
+# Compoundle
 
-Rearranger is an engaging word game built with JavaScript, Node.js, Express, and MySQL. Challenge yourself to create chains of compound words and phrases, and track your scores by creating user profiles.
+Compoundle is an engaging word game built with JavaScript, Node.js, Express, and MySQL. Challenge yourself to create chains of compound words and phrases, and track your scores by creating user profiles.
 
-## Overview
+# Overview
 
 This application offers an interactive experience where users can sign up or start playing immediately. Rearrange the words on the screen to form compound words or phrases with neighboring words (e.g., "Big Bird Seed" becomes Big Bird, Bird Seed). Verify your answers with the check button, and correct placements are highlighted in green, while incorrect ones are in red. Fill in blank spaces with the appropriate words for a seamless gaming experience.
 
-## Screenshots
+# Screenshots
 
-## Application Links:
+# Application Links:
 
-- GITHUB Repo: https://github.com/fanny-travis-lenzlee-thomas/rearranger-working
+- GITHUB Repo: https://github.com/fanny-travis-lenzlee-thomas/Compoundle
 
 - Wireframes & Data Models: https://whimsical.com/wireframes-for-project-2-Wv3cRLETuxDvhTZVdxpumD
 
-- Heroku URL: https://rearrangerapp-b7a73ed90fe8.herokuapp.com/
+- Heroku URL: https://compoundle-0dc961311800.herokuapp.com/
 
-## Contributions
+- Presentation Slides: 
+
+# Contributions
 
 - The following files of code were modified or levereged from Northwestern Bootcamp Week 14 (MVC) Module 20.
   config/connections.js
