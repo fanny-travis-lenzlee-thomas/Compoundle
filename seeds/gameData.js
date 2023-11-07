@@ -1,4 +1,4 @@
-const Game = require("../models/Game");
+const { Game } = require("../models");
 
 const gameData = [
   {
@@ -456,7 +456,5 @@ const gameData = [
 ];
 
 const seedGameTable = () => Game.bulkCreate(gameData);
-
-seedGameTable();
 
 module.exports = seedGameTable;
