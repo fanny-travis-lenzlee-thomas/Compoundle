@@ -550,6 +550,10 @@ button,
   h1 a {
     font-size: 50px;
   }
+  iframe{
+    width: 100%;
+  }
+
   #imageListId div {
     display: block;
     margin: 0 auto;
