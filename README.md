@@ -8,6 +8,8 @@ This application offers an interactive experience where users can sign up or sta
 
 # Screenshots
 
+![Alt text](image-2.png)![Alt text](image.png) ![Alt text](image-1.png)
+
 # Application Links:
 
 - GITHUB Repo: https://github.com/fanny-travis-lenzlee-thomas/Compoundle
@@ -16,7 +18,9 @@ This application offers an interactive experience where users can sign up or sta
 
 - Heroku URL: https://compoundle-0dc961311800.herokuapp.com/
 
-- Presentation Slides: 
+- Presentation Slides: https://docs.google.com/presentation/d/1udoEdrk-y60uwwfj5SXelh5Vzoe-PKi9/edit?usp=sharing&ouid=112590629805992963889&rtpof=true&sd=true
+
+- Demo Video: https://www.youtube.com/watch?v=zWC4_OTc_jg
 
 # Contributions
 
@@ -50,7 +54,7 @@ This application offers an interactive experience where users can sign up or sta
 
 MIT License
 
-Copyright (c) 2023 fanny-travis-lenzlee-thomas
+Copyright (c) 2023 | fanny-travis-lenzlee-thomas | Purple Onions
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
