@@ -1,0 +1,22 @@
+<div class="rearranger">
+  <h1 id="profile-username-line"> {{username}} </h1>
+  <h3>Average Time: {{averageTime}} seconds</h3>
+  <h3>Average Number of Attempts: {{averageAttempts}}</h3>
+  <h3><a href="/game/{{currentLevel}}"><button
+        id="profile-next-level-button"
+      >Next level</button></a></h3>
+  {{#each combinedData}}
+    <div class="user-puzzle-info">
+      <h3 id="profile-puzzle-title"><a href="/game/{{this.puzzle}}">Puzzle
+          {{this.puzzle}}</a></h3>
+      <h1 id="profile-puzzle-words">{{this.gameData.compoundled}}</h1>
+      <h3>Time: {{this.time}} seconds</h3>
+      <h3>Number of Attempts: {{this.number_of_attempts}} </h3>
+      {{#if this.solved}}
+        <h3>Solved on: {{this.solved_date}} </h3>
+      {{else}}
+        <h3>Not yet solved</h3>
+      {{/if}}
+    </div>
+  {{/each}}
+</div>

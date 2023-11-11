@@ -1,12 +1,10 @@
 {{#if loggedIn}}
-  
+
   {{#unless currentLevel}}
     <button id="submit-button"><a href="game/1">Start Game</a></button>
 
   {{else}}
-  
-  <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
-  
+    <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
   {{/unless}}
 
 {{else}}
@@ -14,7 +12,7 @@
 
 {{/if}}
 
-<div>
+<div id="instructions">
   <h2>How To Play:</h2>
 
   <p>Rearrange the word blocks to form a chain of compound words and click
@@ -23,4 +21,5 @@
 <iframe
   width="420"
   height="345"
-  src="https://www.youtube.com/embed/zWC4_OTc_jg">
+  src="https://www.youtube.com/embed/d8cMThiB-B8"
+></iframe>

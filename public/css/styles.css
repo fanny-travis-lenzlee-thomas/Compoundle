@@ -4,6 +4,7 @@
   --tertiary: #899499;
   --quatrinary: linen;
   --success: honeydew;
+  --yellow: #ffe200;
   --success-1: darkseagreen;
   --light: ghostwhite;
   --dark: #414953;
@@ -36,7 +37,7 @@ header {
   font-family: "Russo One", sans-serif;
 }
 
-#username-welcome {
+.username-welcome {
   text-align: center;
   padding: 5px;
   color: var(--success-1);
@@ -47,6 +48,25 @@ nav {
   background-color: var(--dark);
 }
 
+.user-puzzle-info {
+  display: inline-block;
+  border: 5px solid #006400;
+  padding: 10px;
+  margin: 5px;
+}
+
+#profile-puzzle-words {
+  color: #006400;
+}
+
+#profile-puzzle-title {
+  border-bottom: 3px solid black
+}
+
+#profile-username-line {
+  color: #006400;
+}
+
 nav a {
   color: var(--light);
   padding: 10px;
@@ -55,7 +75,9 @@ nav a {
 }
 
 nav a:hover {
-  background-color: var(--success-1);
+  background-color: var(--yellow);
+  border-radius: 2px;
+  color: black;
 }
 
 #imageListId {
@@ -107,6 +129,17 @@ nav a:hover {
   box-sizing: content-box;
   width: 90%;
   margin: 5px;
+}
+
+#profile-next-level-button{
+  margin: 10px;
+  background-color: var(--tertiary);
+  border-radius: var(--border-radius);
+  color: var(--light);
+  font-family: "Inconsolata", monospace;
+  width: 150px;
+  height: 50px;
+
 }
 
 #submit-button {
@@ -234,10 +267,12 @@ form .form-group {
   width: 100%;
   margin: 0.625rem 0;
 }
+
 #results-container {
   text-align: center;
   display: inline-block;
 }
+
 .rearranger {
   background-color: var(--quatrinary);
   padding: 10px;
@@ -284,6 +319,11 @@ form .form-label {
   display: inline-block;
   font-size: 1.2rem;
   margin: 0.625rem 0 0.25rem 0.3rem;
+}
+
+#date-time{
+  color: white;
+  align-items:flex-end;
 }
 
 form .form-input {
@@ -511,9 +551,21 @@ button,
   background: var(--error);
 }
 
-.flip {
-  animation: flip 500ms ease forwards;
+.flip-correct {
+  animation: flip-correct 1000ms ease forwards;
 }
+
+.flip-incorrect {
+  animation: flip-incorrect 1000ms ease forwards;
+}
+
+.flip-partially-correct {
+  animation: flip-partially-correct 1000ms ease forwards;
+}
+
+
+
+
 
 
 @-webkit-keyframes makeItRain {
@@ -528,7 +580,7 @@ button,
   }
 }
 
-@keyframes flip {
+@keyframes flip-correct {
   0% {
     transform: scaleY(1);
   }
@@ -539,8 +591,41 @@ button,
 
   100% {
     transform: scaleY(1);
+    background-color: var(--success-1);
   }
 }
+
+@keyframes flip-incorrect {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+    background-color: var(--error);
+  }
+}
+
+@keyframes flip-partially-correct {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+    background-color: var(--yellow);
+  }
+}
+
+
 
 
 

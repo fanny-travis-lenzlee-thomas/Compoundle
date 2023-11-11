@@ -4,7 +4,6 @@ const howToPlayInstructions = document.querySelector(
 );
 const submitButton = document.querySelector("#submit-button");
 const guessBox = document.querySelector("#guess-box");
-
 const resultsContainer = document.querySelector("#results-container");
 const correctOrderBlock = document.querySelector("#correct-order");
 const currentLevelBlock = document.querySelector("#current-level");
@@ -12,17 +11,35 @@ const currentScoreBlock = document.querySelector("#score-line");
 const blankWordBlock = document.querySelector("#blank-word");
 const pointsBlock = document.querySelector("#points-line");
 const userIdBlock = document.querySelector("#user-id-line");
+const usernameBlock = document.querySelector("#username-line");
 const mobileDiv = document.querySelector("#mobile-div");
+const timerSpan = document.querySelector("#timer-span");
+const numberOfAttemptsSpan = document.querySelector("#number-of-attempts-span");
+const dateTimeLine = document.querySelector("#date-time");
 
 const blankWord = blankWordBlock.textContent;
 const capitalizedBlankWord =
   blankWord.charAt(0).toUpperCase() + blankWord.slice(1);
 
 const correctOrder = correctOrderBlock.textContent;
-const nextLevel = parseInt(currentLevelBlock.textContent, 10) + 1;
+const currentLevel = parseInt(currentLevelBlock.textContent, 10);
+const nextLevel = currentLevel + 1;
 const points = parseInt(pointsBlock.textContent, 10);
 const userId = parseInt(userIdBlock.textContent, 10);
+const username = usernameBlock.textContent;
+console.log("This is how long the username is: ", username.length);
 let newScore;
+let totalSeconds = 0;
+let intervalId;
+let numberOfAttempts = 0;
+let solved;
+let loggedIn;
+let dateSolved;
+
+console.log("This is the username: ", username);
+console.log("This is the user ID: ", userId);
+
+console.log("The current level is, ", currentLevel);
 
 correctAnswerArray = correctOrder.split(",").map(Number);
 //checks if the user is playing on mobile
@@ -51,7 +68,10 @@ function getIdsOfBlocks() {
 
 function checkAnswer(blankWord, correctOrder) {
   //Checks if there is already a losing-result element, and if there is, removes it.
+  numberOfAttempts++;
+  numberOfAttemptsSpan.textContent = numberOfAttempts;
 
+  //Removes something isn't right notice if present on screen
   var existingLosingResult = document.getElementById("losing-result");
   if (existingLosingResult) {
     resultsContainer.removeChild(existingLosingResult);
@@ -69,17 +89,55 @@ function checkAnswer(blankWord, correctOrder) {
       var elements = document.getElementsByClassName("listitemClass");
       var element = elements[i];
       element.addEventListener("mousedown", resetColors);
-      if (outputArray[i] == correctAnswerArray[i]) {
-        element.classList.add("flip");
-        element.style.animationDelay = `${i * 100}ms`;
-        element.style.backgroundColor = "var(--success-1)";
+      if (blankWord) {
+        if (element.contains(guessBox.parentElement)) {
+          if (outputArray[i] == correctAnswerArray[i]) {
+            if (
+              blankWord &&
+              guessBox.value.trim().toLowerCase() !== blankWord
+            ) {
+              // element.style.backgroundColor = "var(--yellow)";
+              element.classList.add("flip-partially-correct");
+              element.style.animationDelay = `${i * 150}ms`;
+            } else {
+              element.classList.add("flip-correct");
+              element.style.animationDelay = `${i * 150}ms`;
+              // element.style.backgroundColor = "var(--success-1)";
+            }
+          } else {
+            element.classList.add("flip-incorrect");
+            element.style.animationDelay = `${i * 150}ms`;
+            // element.style.backgroundColor = "var(--error)";
+          }
+        } else {
+          // For elements that do not contain the guessBox
+          if (outputArray[i] == correctAnswerArray[i]) {
+            element.classList.add("flip-correct");
+            element.style.animationDelay = `${i * 150}ms`;
+            // element.style.backgroundColor = "var(--success-1)";
+          } else {
+            element.classList.add("flip-incorrect");
+            element.style.animationDelay = `${i * 150}ms`;
+            // element.style.backgroundColor = "var(--error)";
+          }
+        }
       } else {
-        element.classList.add("flip");
-        element.style.animationDelay = `${i * 100}ms`;
-        element.style.backgroundColor = "var(--error)";
+        for (var i = 0; i < correctAnswerArray.length; i++) {
+          var elements = document.getElementsByClassName("listitemClass");
+          var element = elements[i];
+          element.addEventListener("mousedown", resetColors);
+          if (outputArray[i] == correctAnswerArray[i]) {
+            element.classList.add("flip-correct");
+            element.style.animationDelay = `${i * 100}ms`;
+            // element.style.backgroundColor = "var(--success-1)";
+          } else {
+            element.classList.add("flip-incorrect");
+            element.style.animationDelay = `${i * 100}ms`;
+            // element.style.backgroundColor = "var(--error)";
+          }
+        }
       }
     }
-
     //Checks if the level includes a blank word or not, and updates the criteria for a correct response accordingly.
     if (blankWord) {
       isCorrect =
@@ -91,6 +149,7 @@ function checkAnswer(blankWord, correctOrder) {
 
     //HTML edits for a correct answer.
     if (isCorrect) {
+      clearInterval(intervalId);
       var winningResult = document.createElement("h1");
       var nextLevelButton = document.createElement("button");
       var nextLevelAnchor = document.createElement("a");
@@ -100,11 +159,27 @@ function checkAnswer(blankWord, correctOrder) {
       nextLevelAnchor.href = `/game/${nextLevel}`;
       nextLevelButton.id = "next-level-button";
       newScore = currentScore + points;
+      dateSolved = dateTimeLine.textContent;
       currentScoreBlock.textContent = newScore;
       resultsContainer.appendChild(winningResult);
       nextLevelAnchor.appendChild(nextLevelButton);
       resultsContainer.appendChild(nextLevelAnchor);
-
+      solved = true;
+      //Update the users userPuzzle table if they are logged in
+      if (username.length > 0) {
+        loggedIn = true;
+      }
+      if (loggedIn) {
+        updateUserPuzzleData(
+          totalSeconds,
+          numberOfAttempts,
+          username,
+          userId,
+          currentLevel,
+          solved,
+          dateSolved
+        );
+      }
       //Create the elements for the confetti animation
       var confettiContainer = document.getElementById("confettiContainer");
       for (var i = 0; i < 13; i++) {
@@ -147,7 +222,9 @@ function resetColors() {
   }
 
   for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.remove("flip");
+    elements[i].classList.remove("flip-correct");
+    elements[i].classList.remove("flip-incorrect");
+    elements[i].classList.remove("flip-partially-correct");
     elements[i].style.backgroundColor = "var(--secondary)";
   }
 }
@@ -163,7 +240,12 @@ $(function () {
     .disableSelection();
 });
 
-function updateScoreOnServer(newScore, nextLevel, userId) {
+function countTime() {
+  ++totalSeconds;
+  timerSpan.textContent = totalSeconds;
+}
+
+function updateScoreOnServer() {
   // Updates the user's score via a put request
   fetch(`/api/users/${userId}`, {
     method: "PUT",
@@ -184,6 +266,73 @@ function updateScoreOnServer(newScore, nextLevel, userId) {
     });
 }
 
+function updateUserPuzzleData(totalSeconds, numberOfAttempts) {
+  fetch(
+    `api/users/userPuzzle?username=${username}&user_id=${userId}&level=${currentLevel}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length > 0 && data[0][0] && data[0][0].solved) {
+        console.log("The puzzle was previously solved");
+        fetch("/api/users/userPuzzle", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            user_id: userId,
+            time: totalSeconds,
+            number_of_attempts: numberOfAttempts,
+            level: currentLevel,
+            solved: solved,
+            solved_date: dateSolved,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Time updated successfully:", data.time);
+          })
+          .catch((error) => {
+            console.error("Error updating score:", error);
+          });
+      } else {
+        console.log("The puzzle was not previously solved");
+        fetch("/api/users/userPuzzle", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            user_id: userId,
+            time: totalSeconds,
+            number_of_attempts: numberOfAttempts,
+            level: currentLevel,
+            solved: solved,
+            solved_date: dateSolved,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Time updated successfully:", data.time);
+          })
+          .catch((error) => {
+            console.error("Error updating score:", error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.error("Error updating score:", error);
+    });
+}
+
 //Function that adds instructions for the blank word portion
 function isDemoLevel() {
   if (nextLevel === 17) {
@@ -192,8 +341,19 @@ function isDemoLevel() {
   }
 }
 
+function updateDateTime() {
+  const currentDateTime = dayjs().format("MM/DD/YY");
+  dateTimeLine.textContent = currentDateTime;
+}
+
+// Update the date and time initially and then every second
+updateDateTime();
+
 getIdsOfBlocks();
 isDemoLevel();
+intervalId = setInterval(countTime, 1000);
+
+// console.log(session);
 
 //Event listener on the submit button
 submitButton.addEventListener("click", async function () {

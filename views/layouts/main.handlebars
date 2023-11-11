@@ -14,13 +14,14 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
     ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Caveat&family=Inconsolata:wght@300;400&family=Russo+One&display=swap"
       rel="stylesheet"
     />
+
     <link rel="icon" href="/images/favicon.png" id="icon" />
 
   </head>
@@ -33,9 +34,16 @@
       {{! <a href="/">Home</a> }}
       {{#if loggedIn}}
         <a id="logout">Logout</a>
-        <h1 id="username-welcome"> Welcome, {{username}}!</h1>
+        <h3 class="username-welcome">
+          Welcome,
+          <a
+            class="username-welcome"
+            href="/api/users/profile"
+          >{{username}}</a></h3>
+        <h3 id="date-time"></h3>
       {{else}}
         <a href="/login">Login</a>
+        <h3 id="date-time"></h3>
       {{/if}}
     </nav>
     <main>

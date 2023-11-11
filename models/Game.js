@@ -15,6 +15,10 @@ Game.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    compoundled: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     correct_order: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,6 +35,10 @@ Game.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
+    },
+    upload_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {

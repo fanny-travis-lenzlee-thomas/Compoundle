@@ -3,7 +3,8 @@
     <h3 id="how-to-play-instructions">Rearrange the words below to form a chain
       of compound words</h3>
   </div>
-  <h3>Level {{level}} | <span id="points-line">{{points}}</span> Points</h3>
+  <h3>Puzzle {{level}} | {{uploadDate}}</h3>
+  <h3><span id="points-line" class="hidden">{{points}}</span></h3>
 
   <div id="imageListId">
     {{#each wordsArray}}
@@ -16,13 +17,14 @@
       </div>
     {{/each}}
   </div>
-  <div id="mobile-div"></div>
+  <div>Time Elapsed: <span id="timer-span">0</span></div>
+  <div>Number of Attempts: <span id="number-of-attempts-span">0</span></div>
   {{#if score}}
-    <div id="score-div">Current Score:
-      <span id="score-line">{{score}}</span></div>
+    <div id="score-div" class="hidden">Current Score:
+      <span id="score-line" class="hidden">{{score}}</span></div>
   {{else}}
-    <div id="score-div">Current Score:
-      <span id="score-line">Log in to save score</span></div>
+    <div id="score-div" class="hidden">Current Score:
+      <span id="score-line" class="hidden">Log in to save score</span></div>
   {{/if}}
   <div id="outputDiv">
     <input id="outputvalues" type="text" value="" />
@@ -33,6 +35,7 @@
   <div id="blank-word" class="hidden">{{blankWord}}</div>
   <div id="current-level" class="hidden">{{level}}</div>
   <div id="user-id-line" class="hidden">{{userId}}</div>
+  <div id="username-line" class="hidden">{{username}}</div>
 
   <div id="results-container"></div>
 
