@@ -30,6 +30,38 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/puzzles", async (req, res) => {
+  try {
+    const dbGamesData = await Game.findAll({
+      attributes: [
+        "id",
+        "words",
+        "correct_order",
+        "hidden_word",
+        "points",
+        "upload_date",
+        "compoundled",
+      ],
+    });
+
+    const games = dbGamesData.map((game) => game.get({ plain: true }));
+    // console.log(games);
+    // res.json(games);
+
+    res.render("partials/notloggedinpuzzles", {
+      games,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+      currentLevel: req.session.currentLevel,
+    });
+    console.log(req.session.username);
+    console.log("This is the current user level, ", req.session.currentLevel);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // GET one game
 router.get("/game/:id", async (req, res) => {
   try {

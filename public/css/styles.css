@@ -216,6 +216,17 @@ nav a:hover {
   color: var(--light);
 }
 
+#profile-buttons-div{
+  text-align: center;
+}
+
+.inline-block {
+  display: inline-block
+}
+.solved-puzzle {
+  background-color: var(--success-1);
+}
+
 .hidden {
   display: none;
 }
@@ -256,6 +267,16 @@ nav a:hover {
 
 #submit-button {
   margin: 10px;
+}
+
+.submit-button {
+  margin: 10px;
+  background-color: var(--tertiary);
+  border-radius: var(--border-radius);
+  color: var(--light);
+  font-family: "Inconsolata", monospace;
+  width: 150px;
+  height: 50px;
 }
 
 form {

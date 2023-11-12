@@ -2,13 +2,21 @@
   <h1 id="profile-username-line"> {{username}} </h1>
   <h3>Average Time: {{averageTime}} seconds</h3>
   <h3>Average Number of Attempts: {{averageAttempts}}</h3>
-  <h3><a href="/game/{{currentLevel}}"><button
-        id="profile-next-level-button"
-      >Next level</button></a></h3>
+  <h3>Best time: {{bestTime}} seconds on puzzle {{bestTimeLevel}}</h3>
+  <div id="profile-buttons-div">
+    <h3 class="inline-block"><a href="/game/{{currentLevel}}"><button
+          id="profile-next-level-button"
+        >Next level</button></a></h3>
+    <h3 class="inline-block"><a href="/api/users/puzzles"><button
+          id="profile-next-level-button"
+        >All Puzzles</button></a></h3>
+  </div>
   {{#each combinedData}}
     <div class="user-puzzle-info">
       <h3 id="profile-puzzle-title"><a href="/game/{{this.puzzle}}">Puzzle
-          {{this.puzzle}}</a></h3>
+          {{this.puzzle}}</a>
+        |
+        {{this.gameData.upload_date}}</h3>
       <h1 id="profile-puzzle-words">{{this.gameData.compoundled}}</h1>
       <h3>Time: {{this.time}} seconds</h3>
       <h3>Number of Attempts: {{this.number_of_attempts}} </h3>

@@ -1,0 +1,25 @@
+{{#each combinedData}}
+  <div class="user-puzzle-info{{#if this.userData.solved}} solved-puzzle{{/if}}">
+    <h3 id="profile-puzzle-title"><a href="/game/{{this.id}}">Puzzle
+        {{this.id}}</a>
+      |
+      {{this.upload_date}}</h3>
+    <h1 id="profile-puzzle-words">{{this.games.compoundled}}</h1>
+    {{!-- <h3>Time: {{this.time}} seconds</h3>
+    <h3>Number of Attempts: {{this.number_of_attempts}} </h3> --}}
+    {{#if this.userData.solved}}
+      <h3 class="solved-puzzle">{{this.compoundled}}</h3>
+      <h4 class="solved-puzzle">Solved on: {{this.userData.solved_date}} </h4>
+      <h4>Time: {{this.userData.time}} seconds</h4>
+    <h4>Attempts: {{this.userData.number_of_attempts}} </h4>
+
+    {{else}}
+      <h3>{{this.words}}</h3>
+      <a href="/game/{{this.id}}"><h3>Not yet solved</h3></a>
+    <h4>Time: 0 seconds</h4>
+        <h4>Attempts: 0</h4>
+
+
+    {{/if}}
+  </div>
+{{/each}}

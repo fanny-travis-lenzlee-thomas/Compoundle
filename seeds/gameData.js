@@ -8,7 +8,7 @@ const gameData = [
     hidden_word: null,
     points: 300,
     level: 1,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "09/28/2023",
   },
   {
     words: "Stakes, Sweep, Chimney",
@@ -17,7 +17,7 @@ const gameData = [
     hidden_word: null,
     points: 300,
     level: 2,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "09/29/2023",
   },
   {
     words: "Variety, Garden, Show",
@@ -26,7 +26,7 @@ const gameData = [
     hidden_word: null,
     points: 300,
     level: 3,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "09/30/2023",
   },
   {
     words: "Red, Table, Water, Hot",
@@ -35,7 +35,7 @@ const gameData = [
     hidden_word: null,
     points: 400,
     level: 4,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/01/2023",
   },
   {
     words: "Box, Rain, Check, Cutter",
@@ -44,7 +44,7 @@ const gameData = [
     hidden_word: null,
     points: 400,
     level: 5,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/02/2023",
   },
   {
     words: "War, Fighter, Flame, Crime",
@@ -53,7 +53,7 @@ const gameData = [
     hidden_word: null,
     points: 400,
     level: 6,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/03/2023",
   },
   {
     words: "Good, Feel, Out, Luck, Last",
@@ -62,7 +62,7 @@ const gameData = [
     hidden_word: null,
     points: 500,
     level: 7,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/04/2023",
   },
   {
     words: "Work, Search, Paint, Job, Team",
@@ -71,7 +71,7 @@ const gameData = [
     hidden_word: null,
     points: 500,
     level: 8,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/05/2023",
   },
   {
     words: "Full, Shot, Moon, Up, Beam",
@@ -80,7 +80,7 @@ const gameData = [
     hidden_word: null,
     points: 500,
     level: 9,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/06/2023",
   },
   {
     words: "Come, Sense, Animal, Back, Kingdom, Talk",
@@ -89,7 +89,7 @@ const gameData = [
     hidden_word: null,
     points: 600,
     level: 10,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/07/2023",
   },
   {
     words: "Last, Encounter, Chance, Fake, Out, Pump",
@@ -98,7 +98,7 @@ const gameData = [
     hidden_word: null,
     points: 600,
     level: 11,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/08/2023",
   },
   {
     words: "Principle, Best, Law, Case, Abiding, Reason",
@@ -107,7 +107,7 @@ const gameData = [
     hidden_word: null,
     points: 600,
     level: 12,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/09/2023",
   },
   {
     words: "Paper, Saint, Airplane, Patron, Wall, Hanger, Paul",
@@ -116,7 +116,7 @@ const gameData = [
     hidden_word: null,
     points: 700,
     level: 13,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/10/2023",
   },
   {
     words: "Market, Off, Suit, Cap, Jacket, Track, Farmers",
@@ -125,7 +125,7 @@ const gameData = [
     hidden_word: null,
     points: 700,
     level: 14,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/11/2023",
   },
   {
     words: "Shoot, Move, Smart, Trouble, Daily, Out, Double",
@@ -134,7 +134,7 @@ const gameData = [
     hidden_word: null,
     points: 700,
     level: 15,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/12/2023",
   },
   {
     words: "Swimming, , Table",
@@ -143,7 +143,7 @@ const gameData = [
     hidden_word: "pool",
     points: 700,
     level: 16,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/13/2023",
   },
   {
     words: "Dancer, Mister, , Hey, Bean, Peanut, Pole",
@@ -152,7 +152,7 @@ const gameData = [
     hidden_word: "butter",
     points: 1000,
     level: 17,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/14/2023",
   },
   {
     words: "Flash, Game, Woman, Card, Boy, Board, ",
@@ -161,7 +161,7 @@ const gameData = [
     hidden_word: "wonder",
     points: 1000,
     level: 18,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/15/2023",
   },
   {
     words: "High, Stadium, Area, Flying, Seating, , Fantasy",
@@ -170,7 +170,7 @@ const gameData = [
     hidden_word: "football",
     points: 1000,
     level: 19,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/16/2023",
   },
   {
     words: "Lava, Bad, Red, Blood, , Hot, Shade",
@@ -179,7 +179,7 @@ const gameData = [
     hidden_word: "lamp",
     points: 1000,
     level: 20,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/17/2023",
   },
   {
     words: ", People, Down, Square, Low, Party, Dance",
@@ -188,7 +188,7 @@ const gameData = [
     hidden_word: "town",
     points: 1000,
     level: 21,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/18/2023",
   },
   {
     words: "Hole, Yellow, Walk, Belly, , Man, Fat",
@@ -197,7 +197,7 @@ const gameData = [
     hidden_word: "cat",
     points: 1000,
     level: 22,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/19/2023",
   },
   {
     words: "Banana, , Phone, Case, Cabinet, File, Storage",
@@ -206,7 +206,7 @@ const gameData = [
     hidden_word: "book",
     points: 1000,
     level: 23,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/20/2023",
   },
   {
     words: "Lands, Step, Zone, Bad, Breaking, , End",
@@ -215,7 +215,7 @@ const gameData = [
     hidden_word: "back",
     points: 1000,
     level: 24,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/21/2023",
   },
   {
     words: "Sugar, Candy, Daddy, Thick, , Cane, Issues",
@@ -224,7 +224,7 @@ const gameData = [
     hidden_word: "skull",
     points: 1000,
     level: 25,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/22/2023",
   },
   {
     words: "Front, Weather, , Door, Up, Mountain, Man",
@@ -233,7 +233,7 @@ const gameData = [
     hidden_word: "bell",
     points: 1000,
     level: 26,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/23/2023",
   },
   {
     words: "Child, Man, Chart, Care, One, , Work",
@@ -242,7 +242,7 @@ const gameData = [
     hidden_word: "flow",
     points: 1000,
     level: 27,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/24/2023",
   },
   {
     words: "Brush, Lay, , Low, Ring, Finger, Paint",
@@ -251,7 +251,7 @@ const gameData = [
     hidden_word: "key",
     points: 1000,
     level: 28,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/25/2023",
   },
   {
     words: "Carrot, Walk, Tale, Tall, Newborn, Cake, ",
@@ -260,7 +260,7 @@ const gameData = [
     hidden_word: "baby",
     points: 1000,
     level: 29,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/26/2023",
   },
   {
     words: "School, Prep, Trip, Time, Day, , Meal",
@@ -269,7 +269,7 @@ const gameData = [
     hidden_word: "piece",
     points: 1000,
     level: 30,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/27/2023",
   },
   {
     words: "Golden, Card, Reader, Rule, Out, Side, ",
@@ -278,7 +278,7 @@ const gameData = [
     hidden_word: "note",
     points: 1000,
     level: 31,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/28/2023",
   },
   {
     words: ", Cake, Walk, Stick, Yard, Golden, Back",
@@ -287,7 +287,7 @@ const gameData = [
     hidden_word: "birthday",
     points: 1000,
     level: 32,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/29/2023",
   },
   {
     words: "Caps, , Tank, Top, Box, Out, Lock",
@@ -296,7 +296,7 @@ const gameData = [
     hidden_word: "think",
     points: 1000,
     level: 33,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/30/2023",
   },
   {
     words: "Free, , Bird, Spirit, Cage, Black, Swan",
@@ -305,7 +305,7 @@ const gameData = [
     hidden_word: "song",
     points: 1000,
     level: 34,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "10/31/2023",
   },
   {
     words: ", Yours, Home, Ball, Up, Smash, Hit",
@@ -314,7 +314,7 @@ const gameData = [
     hidden_word: "base",
     points: 1000,
     level: 35,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/01/2023",
   },
   {
     words: "Cave, Harlem, Renaissance, Game, Board, Diving, ",
@@ -323,7 +323,7 @@ const gameData = [
     hidden_word: "man",
     points: 1000,
     level: 36,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/02/2023",
   },
   {
     words: "Pen, , Brand, Loyal, Guinea, Name, New",
@@ -332,7 +332,7 @@ const gameData = [
     hidden_word: "pig",
     points: 1000,
     level: 37,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/03/2023",
   },
   {
     words: "Basketball, True, , Ring, Crime, Professional, Consumate",
@@ -341,7 +341,7 @@ const gameData = [
     hidden_word: "hoop",
     points: 1000,
     level: 38,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/04/2023",
   },
   {
     words: "Off, Bought, World, Department, , History, Old",
@@ -350,7 +350,7 @@ const gameData = [
     hidden_word: "store",
     points: 1000,
     level: 39,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/05/2023",
   },
   {
     words: "Instrument, , Landing, Wind, Frozen, Never, Almost",
@@ -359,7 +359,7 @@ const gameData = [
     hidden_word: "stiff",
     points: 1000,
     level: 40,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/06/2023",
   },
   {
     words: "Guitar, , String, Body, Electric, Celestial, Monger",
@@ -368,7 +368,7 @@ const gameData = [
     hidden_word: "cheese",
     points: 1000,
     level: 41,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/07/2023",
   },
   {
     words: "Blower, Red, Attack, Whistle, Surprise, October, ",
@@ -377,7 +377,7 @@ const gameData = [
     hidden_word: "dog",
     points: 1000,
     level: 42,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/08/2023",
   },
   {
     words: "Out, Income, , Creep, Supplementary, Maneuver, Bracket",
@@ -386,7 +386,7 @@ const gameData = [
     hidden_word: "tax",
     points: 1000,
     level: 43,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/09/2023",
   },
   {
     words: "Book, , League, Burning, Life, Bush, Saving",
@@ -395,7 +395,7 @@ const gameData = [
     hidden_word: "face",
     points: 1000,
     level: 44,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/10/2023",
   },
   {
     words: ", Iron, Think, Eater, Mind, You, Man",
@@ -404,7 +404,7 @@ const gameData = [
     hidden_word: "big",
     points: 1000,
     level: 45,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "12/01/2023",
   },
   {
     words: "Down, Stream, , Put, Coffee, Shot, Regular",
@@ -413,7 +413,7 @@ const gameData = [
     hidden_word: "mug",
     points: 1000,
     level: 46,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/30/2023",
   },
   {
     words: ", Exit, Fire, Shave, Up, Ramp, Open",
@@ -422,7 +422,7 @@ const gameData = [
     hidden_word: "close",
     points: 1000,
     level: 47,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/29/2023",
   },
 
   {
@@ -432,7 +432,7 @@ const gameData = [
     hidden_word: "take",
     points: 1000,
     level: 48,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/28/2023",
   },
 
   {
@@ -442,7 +442,7 @@ const gameData = [
     hidden_word: "table",
     points: 1000,
     level: 49,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/27/2023",
   },
 
   {
@@ -452,7 +452,7 @@ const gameData = [
     hidden_word: "cut",
     points: 1000,
     level: 50,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/26/2023",
   },
 
   {
@@ -462,7 +462,7 @@ const gameData = [
     hidden_word: "air",
     points: 1000,
     level: 51,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/25/2023",
   },
   {
     words: "Out, Buff, Fox, Movie, Comedy, , Hopeless",
@@ -471,7 +471,7 @@ const gameData = [
     hidden_word: "romantic",
     points: 1000,
     level: 52,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/24/2023",
   },
   {
     words: "General, , Morning, Attorney, Good, Glory, Practicing",
@@ -480,7 +480,7 @@ const gameData = [
     hidden_word: "public",
     points: 1000,
     level: 53,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/23/2023",
   },
   {
     words: "Culture, Deep, , Clash, Mole, Freeze, Pop",
@@ -489,7 +489,7 @@ const gameData = [
     hidden_word: "skin",
     points: 1000,
     level: 54,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/22/2023",
   },
   {
     words: "Up, Security, , Front, Times, Good, Desk",
@@ -498,7 +498,7 @@ const gameData = [
     hidden_word: "job",
     points: 1000,
     level: 55,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/21/2023",
   },
   {
     words: "Welfare, State, Play, Dead, Serious, , Minded",
@@ -507,7 +507,7 @@ const gameData = [
     hidden_word: "fair",
     points: 1000,
     level: 56,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/20/2023",
   },
   {
     words: "Greco, Roman, Stick, Figure, Drawing, Board, ",
@@ -516,7 +516,7 @@ const gameData = [
     hidden_word: "candle",
     points: 1000,
     level: 57,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/19/2023",
   },
   {
     words: "Tomb, Thai, Cold, Stone, Pad, Land, ",
@@ -525,7 +525,7 @@ const gameData = [
     hidden_word: "shoulder",
     points: 1000,
     level: 58,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/18/2023",
   },
   {
     words: "Beer, Pure, Craft, , Bong, Maker, Pleasure",
@@ -534,7 +534,7 @@ const gameData = [
     hidden_word: "hit",
     points: 1000,
     level: 59,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/17/2023",
   },
   {
     words: "Back, Herb, Unit, Garden, Message, , Away",
@@ -543,7 +543,7 @@ const gameData = [
     hidden_word: "circle",
     points: 1000,
     level: 60,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/16/2023",
   },
   {
     words: "Jug, Down, Chug, Bad, Head, Vibes, ",
@@ -552,7 +552,7 @@ const gameData = [
     hidden_word: "count",
     points: 1000,
     level: 61,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/15/2023",
   },
   {
     words: "Think, Unlikely, Highly, , Pair, Off, Beam",
@@ -561,7 +561,7 @@ const gameData = [
     hidden_word: "balance",
     points: 1000,
     level: 62,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/14/2023",
   },
   {
     words: "Nurse, , Chip, Couch, Depth, Charge, In",
@@ -570,7 +570,7 @@ const gameData = [
     hidden_word: "potato",
     points: 1000,
     level: 63,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/13/2023",
   },
   {
     words: "Deductible, Conspicuous, Tax, Amount, Dilligence, , Consumption",
@@ -580,7 +580,7 @@ const gameData = [
     hidden_word: "due",
     points: 1000,
     level: 64,
-    upload_date: "2023-11-06 11:30:00",
+    upload_date: "11/12/2023",
   },
   {
     words: "Shy, Bug, Empty, Spray, Stomach, , Paint",

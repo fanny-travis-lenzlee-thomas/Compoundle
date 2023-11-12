@@ -39,6 +39,7 @@ Game.init(
     upload_date: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
   },
   {

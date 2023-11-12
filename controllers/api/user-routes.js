@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-const { User } = require("../../models");
+const { User, Game } = require("../../models");
 const { DataTypes } = require("sequelize");
 
 // CREATE new user
@@ -77,6 +77,61 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+router.get("/puzzles", async (req, res) => {
+  try {
+    const dbGamesData = await Game.findAll({
+      attributes: [
+        "id",
+        "compoundled",
+        "words",
+        "level",
+        "correct_order",
+        "hidden_word",
+        "points",
+        "upload_date",
+      ],
+    });
+
+    const { username, userId } = req.session;
+    // Dynamically construct the table name
+    const tableName = `${username}${userId}_up`;
+    const [userData, metadata] = await sequelize.query(
+      `
+      SELECT * from ${tableName}
+      `,
+      {}
+    );
+
+    const games = dbGamesData.map((game) => game.get({ plain: true }));
+
+    const userDataMap = userData.reduce((acc, user) => {
+      acc[user.puzzle] = user;
+      return acc;
+    }, {});
+
+    const combinedData = games.map((game) => {
+      const userDataItem = userDataMap[game.level] || {}; // Default to an empty object if no match is found
+      return {
+        ...game,
+        userData: userDataItem,
+      };
+    });
+
+    console.log("this is the combined ");
+
+    res.render("partials/puzzles", {
+      combinedData: combinedData,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+      currentLevel: req.session.currentLevel,
+    });
+    console.log(req.session.username);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
@@ -199,12 +254,21 @@ router.get("/profile", async (req, res) => {
 
     const averagesData = await sequelize.query(
       `
-      SELECT AVG(time) as avg_time, AVG(number_of_attempts) as avg_attempts, MIN(time) as best_time from ${tableName}
-      `,
+      SELECT
+      AVG(time) as avg_time,
+      AVG(number_of_attempts) as avg_attempts,
+      MIN(time) as best_time,
+      (SELECT id FROM ${tableName} WHERE time = MIN(t.time) LIMIT 1) as best_time_id
+  FROM ${tableName} t;
+        `,
       {}
     );
 
-    const gamesData = await sequelize.query(`SELECT compoundled from game;`);
+    console.log("This is my averages data, ", averagesData);
+
+    const gamesData = await sequelize.query(
+      `SELECT compoundled, upload_date from game;`
+    );
     console.log("This is my games data: ", gamesData[0]);
     console.log("This is the averages data I have: ", averagesData[0][0]);
 
@@ -223,6 +287,8 @@ router.get("/profile", async (req, res) => {
       loggedIn: req.session.loggedIn,
       averageTime: averagesData[0][0].avg_time,
       averageAttempts: averagesData[0][0].avg_attempts,
+      bestTime: averagesData[0][0].best_time,
+      bestTimeLevel: averagesData[0][0].best_time_id,
       combinedData: combinedData,
     });
   } catch (err) {

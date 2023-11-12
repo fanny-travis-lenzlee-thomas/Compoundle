@@ -1,14 +1,21 @@
 {{#if loggedIn}}
 
   {{#unless currentLevel}}
-    <button id="submit-button"><a href="game/1">Start Game</a></button>
+    <button id="submit-button"><a href="/today">Today's Puzzle</a></button>
+    <button id="submit-button"><a href="game/1">First Puzzle</a></button>
+    <button class="submit-button"><a href="/api/users/puzzles">All Puzzles</a></button>
 
   {{else}}
-    <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
+    <button id="submit-button"><a href="/today">Today's Puzzle</a></button>
+    <button id="submit-button"><a href="game/{{currentLevel}}">Next Puzzle</a></button>
+    <button class="submit-button"><a href="/api/users/puzzles">All Puzzles</a></button>
+
   {{/unless}}
 
 {{else}}
-  <button id="submit-button"><a href="game/1">Start Game</a></button>
+  <button id="submit-button"><a href="/today">Today's Puzzle</a></button>
+  <button id="submit-button"><a href="game/1">First Puzzle</a></button>
+  <button class="submit-button"><a href="/puzzles">All Puzzles</a></button>
 
 {{/if}}
 
