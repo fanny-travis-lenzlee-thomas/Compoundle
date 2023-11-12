@@ -16,6 +16,7 @@ const mobileDiv = document.querySelector("#mobile-div");
 const timerSpan = document.querySelector("#timer-span");
 const numberOfAttemptsSpan = document.querySelector("#number-of-attempts-span");
 const dateTimeLine = document.querySelector("#date-time");
+const uploadDateSpan = document.querySelector("#upload-date-span");
 
 const blankWord = blankWordBlock.textContent;
 const capitalizedBlankWord =
@@ -96,29 +97,23 @@ function checkAnswer(blankWord, correctOrder) {
               blankWord &&
               guessBox.value.trim().toLowerCase() !== blankWord
             ) {
-              // element.style.backgroundColor = "var(--yellow)";
               element.classList.add("flip-partially-correct");
               element.style.animationDelay = `${i * 150}ms`;
             } else {
               element.classList.add("flip-correct");
               element.style.animationDelay = `${i * 150}ms`;
-              // element.style.backgroundColor = "var(--success-1)";
             }
           } else {
             element.classList.add("flip-incorrect");
             element.style.animationDelay = `${i * 150}ms`;
-            // element.style.backgroundColor = "var(--error)";
           }
         } else {
-          // For elements that do not contain the guessBox
           if (outputArray[i] == correctAnswerArray[i]) {
             element.classList.add("flip-correct");
             element.style.animationDelay = `${i * 150}ms`;
-            // element.style.backgroundColor = "var(--success-1)";
           } else {
             element.classList.add("flip-incorrect");
             element.style.animationDelay = `${i * 150}ms`;
-            // element.style.backgroundColor = "var(--error)";
           }
         }
       } else {
@@ -194,10 +189,20 @@ function checkAnswer(blankWord, correctOrder) {
         window.location.href = nextLevelButton.href;
       });
 
-      if (nextLevel === 65) {
+      //Checks if user is playing the daily puzzle
+      if (dateTimeLine.textContent === uploadDateSpan.textContent) {
         nextLevelButton.remove();
-        winningResult.textContent =
-          "You beat all the levels! Congratulations! ";
+        winningResult.textContent = "You beat today's puzzle!! ";
+        var moreLevelsButton = document.createElement("button");
+        var moreLevelsAnchor = document.createElement("a");
+        moreLevelsButton.textContent = "More Levels";
+        moreLevelsAnchor.href = `/puzzles`;
+        moreLevelsButton.id = "next-level-button";
+        moreLevelsAnchor.appendChild(moreLevelsButton);
+        resultsContainer.appendChild(moreLevelsButton);
+        moreLevelsButton.addEventListener("click", function () {
+          window.location.href = moreLevelsAnchor.href;
+        });
       }
       //HTML edits for an incorrect answer.
     } else {
@@ -342,7 +347,7 @@ function isDemoLevel() {
 }
 
 function updateDateTime() {
-  const currentDateTime = dayjs().format("MM/DD/YY");
+  const currentDateTime = dayjs().format("MM/DD/YYYY");
   dateTimeLine.textContent = currentDateTime;
 }
 

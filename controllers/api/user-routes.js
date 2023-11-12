@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 const { User, Game } = require("../../models");
-const { DataTypes } = require("sequelize");
+const { DataTypes, Op } = require("sequelize");
 
 // CREATE new user
 router.post("/", async (req, res) => {
@@ -95,6 +95,17 @@ router.get("/puzzles", async (req, res) => {
       ],
     });
 
+    const beforeTodayData = await sequelize.query(`SELECT *
+    FROM game
+    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
+    `);
+
+    console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
+
+    parsableBeforeTodayDatas = beforeTodayData[0];
+
+    // console.log("This is the new dbGamesData: ", dbGamesData);
+
     const { username, userId } = req.session;
     // Dynamically construct the table name
     const tableName = `${username}${userId}_up`;
@@ -112,6 +123,21 @@ router.get("/puzzles", async (req, res) => {
       return acc;
     }, {});
 
+    const beforeTodayCombinedData = parsableBeforeTodayDatas.map(
+      (parsableBeforeTodayData) => {
+        const userDataItem = userDataMap[parsableBeforeTodayData.level] || {}; // Default to an empty object if no match is found
+        return {
+          ...parsableBeforeTodayData,
+          userData: userDataItem,
+        };
+      }
+    );
+
+    console.log(
+      "This is the before today data combined, ",
+      beforeTodayCombinedData
+    );
+
     const combinedData = games.map((game) => {
       const userDataItem = userDataMap[game.level] || {}; // Default to an empty object if no match is found
       return {
@@ -120,9 +146,8 @@ router.get("/puzzles", async (req, res) => {
       };
     });
 
-    console.log("this is the combined ");
-
     res.render("partials/puzzles", {
+      beforeTodayCombinedData: beforeTodayCombinedData,
       combinedData: combinedData,
       loggedIn: req.session.loggedIn,
       username: req.session.username,

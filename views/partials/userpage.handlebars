@@ -4,14 +4,14 @@
   <h3>Average Number of Attempts: {{averageAttempts}}</h3>
   <h3>Best time: {{bestTime}} seconds on puzzle {{bestTimeLevel}}</h3>
   <div id="profile-buttons-div">
-    <h3 class="inline-block"><a href="/game/{{currentLevel}}"><button
+    {{!-- <h3 class="inline-block"><a href="/game/{{currentLevel}}"><button
           id="profile-next-level-button"
-        >Next level</button></a></h3>
+        >Next level</button></a></h3> --}}
     <h3 class="inline-block"><a href="/api/users/puzzles"><button
           id="profile-next-level-button"
         >All Puzzles</button></a></h3>
   </div>
-  {{#each combinedData}}
+  {{!-- {{#each combinedData}}
     <div class="user-puzzle-info">
       <h3 id="profile-puzzle-title"><a href="/game/{{this.puzzle}}">Puzzle
           {{this.puzzle}}</a>
@@ -26,5 +26,5 @@
         <h3>Not yet solved</h3>
       {{/if}}
     </div>
-  {{/each}}
+  {{/each}} --}}
 </div>

@@ -32,24 +32,30 @@ router.get("/", async (req, res) => {
 
 router.get("/puzzles", async (req, res) => {
   try {
-    const dbGamesData = await Game.findAll({
-      attributes: [
-        "id",
-        "words",
-        "correct_order",
-        "hidden_word",
-        "points",
-        "upload_date",
-        "compoundled",
-      ],
-    });
+    // const dbGamesData = await Game.findAll({
+    //   attributes: [
+    //     "id",
+    //     "words",
+    //     "correct_order",
+    //     "hidden_word",
+    //     "points",
+    //     "upload_date",
+    //     "compoundled",
+    //   ],
+    // });
 
-    const games = dbGamesData.map((game) => game.get({ plain: true }));
-    // console.log(games);
-    // res.json(games);
+    const dbGamesData = await sequelize.query(`SELECT *
+    FROM game
+    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') <= CURDATE();
+    `);
+
+    // const games = dbGamesData.map((game) => game.get({ plain: true }));
+    // // console.log(games);
+    // // res.json(games);
+    console.log("This is the dbgamesData", dbGamesData[0]);
 
     res.render("partials/notloggedinpuzzles", {
-      games,
+      dbGamesData: dbGamesData[0],
       loggedIn: req.session.loggedIn,
       username: req.session.username,
       currentLevel: req.session.currentLevel,
