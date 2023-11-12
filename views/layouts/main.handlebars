@@ -34,13 +34,14 @@
       {{! <a href="/">Home</a> }}
       {{#if loggedIn}}
         <a id="logout">Logout</a>
+        <p id="date-time"></p>
+
         <h3 class="username-welcome">
           Welcome,
           <a
             class="username-welcome"
             href="/api/users/profile"
           >{{username}}</a></h3>
-        <h3 id="date-time"></h3>
       {{else}}
         <a href="/login">Login</a>
         <h3 id="date-time"></h3>

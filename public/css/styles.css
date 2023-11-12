@@ -74,6 +74,8 @@ nav a {
   text-align: center;
 }
 
+
+
 nav a:hover {
   background-color: var(--yellow);
   border-radius: 2px;
@@ -343,8 +345,10 @@ form .form-label {
 }
 
 #date-time{
-  color: white;
-  align-items:flex-end;
+  color: var(--light);
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
 }
 
 form .form-input {
