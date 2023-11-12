@@ -47,7 +47,7 @@ const signupFormHandler = async (event) => {
     console.log(userPuzzleData);
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/game/1");
     } else {
       alert("Failed to sign up.");
     }

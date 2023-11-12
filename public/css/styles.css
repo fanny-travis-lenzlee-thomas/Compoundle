@@ -667,6 +667,15 @@ button,
     height: 60px;
     text-align: center;
   }
+
+  #solved-imageListId {
+    display: block;
+    margin: 0 auto;
+    width: 90%; 
+    height: 60px;
+    text-align: center;
+
+  }
   
 
   #losing-result {

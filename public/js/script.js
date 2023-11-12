@@ -17,7 +17,7 @@ const timerSpan = document.querySelector("#timer-span");
 const numberOfAttemptsSpan = document.querySelector("#number-of-attempts-span");
 const dateTimeLine = document.querySelector("#date-time");
 const uploadDateSpan = document.querySelector("#upload-date-span");
-
+const imageList = document.querySelector("#imageListId");
 const blankWord = blankWordBlock.textContent;
 const capitalizedBlankWord =
   blankWord.charAt(0).toUpperCase() + blankWord.slice(1);
@@ -156,6 +156,11 @@ function checkAnswer(blankWord, correctOrder) {
       newScore = currentScore + points;
       dateSolved = dateTimeLine.textContent;
       currentScoreBlock.textContent = newScore;
+      for (var i = 0; i < correctAnswerArray.length; i++) {
+        var elements = document.getElementsByClassName("listitemClass");
+        var element = elements[i];
+        element.removeEventListener("mousedown", resetColors);
+      }
       resultsContainer.appendChild(winningResult);
       nextLevelAnchor.appendChild(nextLevelButton);
       resultsContainer.appendChild(nextLevelAnchor);
@@ -236,13 +241,29 @@ function resetColors() {
 
 //Function for rearranging the wordblocks
 $(function () {
-  $("#imageListId")
+  const imageList = $("#imageListId");
+
+  imageList
     .sortable({
       update: function (event, ui) {
         getIdsOfBlocks();
       },
     })
     .disableSelection();
+
+  // Event listener on the submit button
+  submitButton.addEventListener("click", async function () {
+    const isCorrect = await checkAnswer(blankWord, correctOrder);
+
+    // Enable or disable sorting based on the isCorrect condition
+    if (isCorrect) {
+      imageList.sortable("disable");
+    } else {
+      imageList.sortable("enable");
+    }
+
+    updateScoreOnServer(newScore, nextLevel, userId);
+  });
 });
 
 function countTime() {
@@ -345,7 +366,6 @@ function isDemoLevel() {
       "Fill in the blank word to complete the chain";
   }
 }
-
 function updateDateTime() {
   const currentDateTime = dayjs().format("MM/DD/YYYY");
   dateTimeLine.textContent = currentDateTime;
@@ -361,7 +381,7 @@ intervalId = setInterval(countTime, 1000);
 // console.log(session);
 
 //Event listener on the submit button
-submitButton.addEventListener("click", async function () {
-  await checkAnswer(blankWord, correctOrder);
-  updateScoreOnServer(newScore, nextLevel, userId);
-});
+// submitButton.addEventListener("click", async function () {
+//   await checkAnswer(blankWord, correctOrder);
+//   updateScoreOnServer(newScore, nextLevel, userId);
+// });

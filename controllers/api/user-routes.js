@@ -97,7 +97,7 @@ router.get("/puzzles", async (req, res) => {
 
     const beforeTodayData = await sequelize.query(`SELECT *
     FROM game
-    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
+    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') <= CURDATE();
     `);
 
     console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
