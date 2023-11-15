@@ -1,10 +1,13 @@
-<h1>Puzzle Already Solved</h1>
-<h5>Upload Date: <span id="solved-page-upload-date">{{uploadDate}}</span></h5>
-<h1>{{compoundled}}</h1>
-<h2>Time: {{time}} seconds</h2>
-<h2>Number of Attempts {{numberOfAttempts}}</h2>
-<a id="next-level-anchor" href="/game/{{nextLevel}}"><button
-    id="next-level-button"
-  >Next Level</button></a>
+<div class="rearranger">
+
+  <h1 id="profile-puzzle-title">Puzzle Already Solved</h1>
+  <h5>Upload Date: <span id="solved-page-upload-date">{{uploadDate}}</span></h5>
+  <h1 id="profile-puzzle-words">{{compoundled}}</h1>
+  <h2>Time: {{time}} seconds</h2>
+  <h2>Number of Attempts: {{numberOfAttempts}}</h2>
+  <a id="next-level-anchor" href="/game/{{nextLevel}}"><button
+      id="next-level-button"
+    >Next Level</button></a>
+</div>
 
 <script src="/js/isToday.js"></script>

@@ -3,22 +3,22 @@
   {{#unless currentLevel}}
     <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
     {{! <button id="submit-button"><a href="game/1">First Puzzle</a></button> }}
-    <a href="/api/users/puzzles">
-      <button class="submit-button">All Puzzles</button></a>
+    {{! <a href="/api/users/puzzles">
+      <button class="submit-button">All Puzzles</button></a> }}
 
   {{else}}
     <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
     {{!-- <button id="submit-button"><a href="game/{{currentLevel}}">Next Puzzle</a></button> --}}
-    <a href="/api/users/puzzles"><button class="submit-button">All Puzzles</button></a>
+    {{! <a href="/allPuzz"><button class="submit-button">All Puzzles</button></a> }}
 
   {{/unless}}
 
 {{else}}
-  <button id="submit-button"><a href="/today">Today's Puzzle</a></button>
-  <button id="submit-button"><a href="game/1">First Puzzle</a></button>
-  <button class="submit-button"><a href="/puzzles">All Puzzles</a></button>
+  <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
+  <a href="game/1"><button id="submit-button">First Puzzle</button></a>
 
 {{/if}}
+<a href="/allPuzzles"><button class="submit-button">All Puzzles</button></a>
 
 <div id="instructions">
   <h2>How To Play:</h2>

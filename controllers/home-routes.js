@@ -300,6 +300,8 @@ router.get("/today", async (req, res) => {
 
       if (userData && userData[0] && userData[0].solved === 1) {
         res.render("partials/solved", {
+          loggedIn: req.session.loggedIn,
+          username: req.session.username,
           numberOfAttempts: userData[0].number_of_attempts,
           time: userData[0].time,
           compoundled: game.compoundled,
@@ -383,6 +385,94 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/allPuzzles", async (req, res) => {
+  try {
+    const dbGamesData = await Game.findAll({
+      attributes: [
+        "id",
+        "compoundled",
+        "words",
+        "level",
+        "correct_order",
+        "hidden_word",
+        "points",
+        "upload_date",
+      ],
+    });
+
+    const beforeTodayData = await sequelize.query(`SELECT *
+    FROM game
+    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
+    `);
+
+    console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
+
+    parsableBeforeTodayDatas = beforeTodayData[0];
+
+    // console.log("This is the new dbGamesData: ", dbGamesData);
+    if (req.session.loggedIn) {
+      const { username, userId } = req.session;
+      // Dynamically construct the table name
+      const tableName = `${username}${userId}_up`;
+      const [userData, metadata] = await sequelize.query(
+        `
+        SELECT * from ${tableName}
+        `,
+        {}
+      );
+
+      const games = dbGamesData.map((game) => game.get({ plain: true }));
+
+      const userDataMap = userData.reduce((acc, user) => {
+        acc[user.puzzle] = user;
+        return acc;
+      }, {});
+
+      const beforeTodayCombinedData = parsableBeforeTodayDatas.map(
+        (parsableBeforeTodayData) => {
+          const userDataItem = userDataMap[parsableBeforeTodayData.level] || {}; // Default to an empty object if no match is found
+          return {
+            ...parsableBeforeTodayData,
+            userData: userDataItem,
+          };
+        }
+      );
+
+      console.log(
+        "This is the before today data combined, ",
+        beforeTodayCombinedData
+      );
+
+      const combinedData = games.map((game) => {
+        const userDataItem = userDataMap[game.level] || {}; // Default to an empty object if no match is found
+        return {
+          ...game,
+          userData: userDataItem,
+        };
+      });
+      res.render("partials/testpuzzle", {
+        beforeTodayCombinedData: beforeTodayCombinedData,
+        combinedData: combinedData,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+        currentLevel: req.session.currentLevel,
+      });
+      console.log(req.session.username);
+    } else {
+      console.log("This is my db games data", dbGamesData);
+      res.render("partials/testpuzzlesnotloggedin", {
+        dbGamesData: dbGamesData,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+        currentLevel: req.session.currentLevel,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
