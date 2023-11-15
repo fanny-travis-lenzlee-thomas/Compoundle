@@ -318,7 +318,7 @@ router.get("/profile", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).render("error", { errorMessage: err.message });
+    res.status(500).json({ error: "Could not update score" });
   }
 });
 
@@ -340,7 +340,7 @@ router.get("/:id", async (req, res) => {
     res.json(user);
   } catch (err) {
     console.log(err);
-    res.status(500).render("error", { errorMessage: err.message });
+    res.status(500).json({ error: "Could not update score" });
   }
 });
 
@@ -351,7 +351,7 @@ router.get("/", async (req, res) => {
     res.status(200).json(userData);
   } catch (err) {
     console.log(err);
-    res.status(500).render("error", { errorMessage: err.message });
+    res.status(500).json({ error: "Could not update score" });
   }
 });
 

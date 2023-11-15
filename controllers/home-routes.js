@@ -251,7 +251,7 @@ router.get("/game/api/users/userPuzzle", async (req, res) => {
     res.json(solvedValue);
   } catch (err) {
     console.log(err);
-    res.status(500).render("error", { errorMessage: err.message });
+    res.status(500).json(err);
   }
 });
 

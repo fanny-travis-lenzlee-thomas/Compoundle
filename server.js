@@ -28,6 +28,13 @@ const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+
+  // Render the error template with the error message
+  res.status(500).render("error", { errorMessage: err.message });
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
