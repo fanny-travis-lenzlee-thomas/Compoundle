@@ -339,8 +339,8 @@ router.get("/:id", async (req, res) => {
 
     res.json(user);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.log(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
@@ -350,7 +350,8 @@ router.get("/", async (req, res) => {
     const userData = await User.findAll({});
     res.status(200).json(userData);
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 

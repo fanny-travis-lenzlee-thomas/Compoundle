@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
     console.log("This is the current user level, ", req.session.currentLevel);
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
@@ -64,7 +64,7 @@ router.get("/puzzles", async (req, res) => {
     console.log("This is the current user level, ", req.session.currentLevel);
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
@@ -378,7 +378,7 @@ router.get("/user/:id", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
@@ -476,7 +476,7 @@ router.get("/allPuzzles", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
