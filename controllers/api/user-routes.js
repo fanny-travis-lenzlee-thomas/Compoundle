@@ -392,7 +392,7 @@ router.post("/createTable", async (req, res) => {
       solved: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
+        defaultValue: false,
       },
       solved_date: {
         type: DataTypes.STRING,

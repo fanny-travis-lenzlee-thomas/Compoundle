@@ -48,7 +48,8 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 //If they are, adds the blank word to the guess box as currently the jquery we are using does not support input boxes.
 if (isMobile && nextLevel > 16) {
-  guessBox.value = capitalizedBlankWord;
+  guessBox.parentElement.textContent = capitalizedBlankWord;
+  guessBox.remove();
 }
 
 //Gets current score if it exists, or sets it to 0
