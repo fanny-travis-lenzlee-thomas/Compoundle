@@ -242,12 +242,17 @@ router.get("/game/:id", async (req, res) => {
 });
 
 router.get("/game/api/users/userPuzzle", async (req, res) => {
-  const { username, user_id, level } = req.query;
-  const tableName = `${username}${user_id}_up`;
-  const solvedValue = await sequelize.query(
-    `SELECT puzzle, solved FROM ${tableName} WHERE PUZZLE = ${level}`
-  );
-  res.json(solvedValue);
+  try {
+    const { username, user_id, level } = req.query;
+    const tableName = `${username}${user_id}_up`;
+    const solvedValue = await sequelize.query(
+      `SELECT puzzle, solved FROM ${tableName} WHERE PUZZLE = ${level}`
+    );
+    res.json(solvedValue);
+  } catch (err) {
+    console.log(err);
+    res.status(500).render("error", { errorMessage: err.message });
+  }
 });
 
 router.get("/today", async (req, res) => {
@@ -344,7 +349,7 @@ router.get("/today", async (req, res) => {
     console.log("The user Id I have is, ", req.session.userId);
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 

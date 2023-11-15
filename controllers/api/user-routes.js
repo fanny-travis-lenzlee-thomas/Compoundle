@@ -317,8 +317,8 @@ router.get("/profile", async (req, res) => {
       combinedData: combinedData,
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.log(err);
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
