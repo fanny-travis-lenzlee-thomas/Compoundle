@@ -36,6 +36,7 @@ let numberOfAttempts = 0;
 let solved;
 let loggedIn;
 let dateSolved;
+let emojiArray = [];
 
 console.log("This is the username: ", username);
 console.log("This is the user ID: ", userId);
@@ -99,21 +100,28 @@ function checkAnswer(blankWord, correctOrder) {
               guessBox.value.trim().toLowerCase() !== blankWord
             ) {
               element.classList.add("flip-partially-correct");
+              emojiArray.push("🟨");
               element.style.animationDelay = `${i * 150}ms`;
             } else {
               element.classList.add("flip-correct");
+              emojiArray.push("🟩");
               element.style.animationDelay = `${i * 150}ms`;
             }
           } else {
             element.classList.add("flip-incorrect");
+            emojiArray.push("🟥");
+
             element.style.animationDelay = `${i * 150}ms`;
           }
         } else {
           if (outputArray[i] == correctAnswerArray[i]) {
             element.classList.add("flip-correct");
+            emojiArray.push("🟩");
+
             element.style.animationDelay = `${i * 150}ms`;
           } else {
             element.classList.add("flip-incorrect");
+            emojiArray.push("🟥");
             element.style.animationDelay = `${i * 150}ms`;
           }
         }
@@ -124,10 +132,12 @@ function checkAnswer(blankWord, correctOrder) {
           element.addEventListener("mousedown", resetColors);
           if (outputArray[i] == correctAnswerArray[i]) {
             element.classList.add("flip-correct");
+            emojiArray.push("🟩");
             element.style.animationDelay = `${i * 100}ms`;
             // element.style.backgroundColor = "var(--success-1)";
           } else {
             element.classList.add("flip-incorrect");
+            emojiArray.push("🟥");
             element.style.animationDelay = `${i * 100}ms`;
             // element.style.backgroundColor = "var(--error)";
           }
@@ -243,6 +253,10 @@ function checkAnswer(blankWord, correctOrder) {
       losingResult.textContent = "Something Isn't Right...";
       resultsContainer.appendChild(losingResult);
     }
+    var emojiString = emojiArray.join("") + " ";
+
+    console.log(emojiArray);
+    console.log(emojiString);
 
     resolve(isCorrect);
   });
