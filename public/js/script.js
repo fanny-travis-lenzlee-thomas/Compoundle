@@ -210,6 +210,27 @@ function checkAnswer(blankWord, correctOrder) {
         moreLevelsButton.id = "next-level-button";
         moreLevelsAnchor.appendChild(moreLevelsButton);
         resultsContainer.appendChild(moreLevelsButton);
+        const shareButton = document.createElement("button");
+        shareButton.id = "share-button";
+        shareButton.textContent = "Share";
+        shareButton.classList.add("next-level-button");
+        resultsContainer.appendChild(shareButton);
+        shareButton.addEventListener("click", async () => {
+          try {
+            if (navigator.share) {
+              await navigator.share({
+                title: "Compoundle Challenge",
+                text: `I beat today's Compoundle in ${time} seconds!`,
+                url: window.location.href,
+              });
+            } else {
+              alert("Coming soon!");
+            }
+          } catch (error) {
+            console.error("Error sharing:", error);
+          }
+        });
+
         moreLevelsButton.addEventListener("click", function () {
           window.location.href = moreLevelsAnchor.href;
         });
@@ -390,3 +411,7 @@ intervalId = setInterval(countTime, 1000);
 //   await checkAnswer(blankWord, correctOrder);
 //   updateScoreOnServer(newScore, nextLevel, userId);
 // });
+
+document.addEventListener("DOMContentLoaded", function (totalSeconds) {
+  const time = totalSeconds;
+});
