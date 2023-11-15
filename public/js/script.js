@@ -201,7 +201,11 @@ function checkAnswer(blankWord, correctOrder) {
         var moreLevelsButton = document.createElement("button");
         var moreLevelsAnchor = document.createElement("a");
         moreLevelsButton.textContent = "More Levels";
-        moreLevelsAnchor.href = `/puzzles`;
+        if (loggedIn) {
+          moreLevelsAnchor.href = `/api/users/puzzles`;
+        } else {
+          moreLevelsAnchor.href = `/puzzles`;
+        }
         moreLevelsButton.id = "next-level-button";
         moreLevelsAnchor.appendChild(moreLevelsButton);
         resultsContainer.appendChild(moreLevelsButton);

@@ -46,7 +46,7 @@ router.get("/puzzles", async (req, res) => {
 
     const dbGamesData = await sequelize.query(`SELECT *
     FROM game
-    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') <= CURDATE();
+    WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
     `);
 
     // const games = dbGamesData.map((game) => game.get({ plain: true }));
@@ -69,12 +69,101 @@ router.get("/puzzles", async (req, res) => {
 });
 
 // GET one game
+// router.get("/game/:id", async (req, res) => {
+//   try {
+//     const dbGameData = await Game.findByPk(req.params.id, {
+//       attributes: [
+//         "id",
+//         "words",
+//         "compoundled",
+//         "correct_order",
+//         "hidden_word",
+//         "points",
+//         "level",
+//         "upload_date",
+//       ],
+//     });
+
+//     const game = dbGameData.get({ plain: true });
+//     const wordsArray = game.words.split(", ");
+//     const id = req.params.id;
+
+//     if (req.session.loggedIn) {
+//       const { username, userId } = req.session;
+//       const tableName = `${username}${userId}_up`;
+
+//       console.log("Game data:", game);
+
+//       const [userData, metadata] = await sequelize.query(
+//         `
+//         SELECT solved from ${tableName} where puzzle = ${id}
+//         `,
+//         {}
+//       );
+
+//       console.log("This is my user data: ", userData);
+
+//       console.log(`the user ${username} has an id of ${userId}`);
+//       console.log(
+//         `This is the number of attempts, ${userData[0].number_of_attempts}`
+//       );
+
+//       console.log(`This is the time ${userData[0].time}`);
+
+//       if (userData && userData[0] && userData[0].solved === 1) {
+//         res.render("partials/solved", {
+//           numberOfAttempts: userData[0].number_of_attempts,
+//           time: userData[0].time,
+//           compoundled: game.compoundled,
+//           nextLevel: game.level + 1,
+//         });
+//       } else {
+//         res.render("partials/wordblock", {
+//           wordsArray,
+//           correctOrder: game.correct_order,
+//           blankWord: game.hidden_word,
+//           level: game.id,
+//           points: game.points,
+//           loggedIn: req.session.loggedIn,
+//           username: req.session.username,
+//           score: req.session.userScore,
+//           currentLevel: req.session.currentLevel,
+//           userId: req.session.userId,
+//           uploadDate: game.upload_date,
+//         });
+//       }
+//     } else {
+//       // Handle the case when the user is not logged in
+//       res.render("partials/wordblock", {
+//         wordsArray,
+//         correctOrder: game.correct_order,
+//         blankWord: game.hidden_word,
+//         level: game.id,
+//         points: game.points,
+//         loggedIn: req.session.loggedIn,
+//         username: req.session.username,
+//         score: req.session.userScore,
+//         currentLevel: req.session.currentLevel,
+//         userId: req.session.userId,
+//         uploadDate: game.upload_date,
+//       });
+//     }
+
+//     console.log("The username I have is, ", req.session.username);
+//     console.log("The user Id I have is, ", req.session.userId);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get("/game/:id", async (req, res) => {
   try {
     const dbGameData = await Game.findByPk(req.params.id, {
       attributes: [
         "id",
         "words",
+        "compoundled",
         "correct_order",
         "hidden_word",
         "points",
@@ -85,22 +174,63 @@ router.get("/game/:id", async (req, res) => {
 
     const game = dbGameData.get({ plain: true });
     const wordsArray = game.words.split(", ");
+    const id = req.params.id;
 
-    console.log("Game data:", game);
+    if (req.session.loggedIn) {
+      const { username, userId } = req.session;
+      const tableName = `${username}${userId}_up`;
 
-    res.render("partials/wordblock", {
-      wordsArray,
-      correctOrder: game.correct_order,
-      blankWord: game.hidden_word,
-      level: game.id,
-      points: game.points,
-      loggedIn: req.session.loggedIn,
-      username: req.session.username,
-      score: req.session.userScore,
-      currentLevel: req.session.currentLevel,
-      userId: req.session.userId,
-      uploadDate: game.upload_date,
-    });
+      console.log("Game data:", game);
+
+      const [userData, metadata] = await sequelize.query(
+        `
+        SELECT * from ${tableName} where puzzle = ${id}
+        `,
+        {}
+      );
+
+      console.log("This is my user data: ", userData);
+
+      console.log(`the user ${username} has an id of ${userId}`);
+
+      if (userData && userData[0] && userData[0].solved === 1) {
+        res.render("partials/solved", {
+          numberOfAttempts: userData[0].number_of_attempts,
+          time: userData[0].time,
+          compoundled: game.compoundled,
+          nextLevel: game.level + 1,
+        });
+      } else {
+        res.render("partials/wordblock", {
+          wordsArray,
+          correctOrder: game.correct_order,
+          blankWord: game.hidden_word,
+          level: game.id,
+          points: game.points,
+          loggedIn: req.session.loggedIn,
+          username: req.session.username,
+          score: req.session.userScore,
+          currentLevel: req.session.currentLevel,
+          userId: req.session.userId,
+          uploadDate: game.upload_date,
+        });
+      }
+    } else {
+      // Handle the case when the user is not logged in
+      res.render("partials/wordblock", {
+        wordsArray,
+        correctOrder: game.correct_order,
+        blankWord: game.hidden_word,
+        level: game.id,
+        points: game.points,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+        score: req.session.userScore,
+        currentLevel: req.session.currentLevel,
+        userId: req.session.userId,
+        uploadDate: game.upload_date,
+      });
+    }
 
     console.log("The username I have is, ", req.session.username);
     console.log("The user Id I have is, ", req.session.userId);
@@ -138,6 +268,7 @@ router.get("/today", async (req, res) => {
       attributes: [
         "id",
         "words",
+        "compoundled",
         "correct_order",
         "hidden_word",
         "points",
@@ -149,21 +280,61 @@ router.get("/today", async (req, res) => {
     const game = dbGameData.get({ plain: true });
     const wordsArray = game.words.split(", ");
 
-    console.log("Game data:", game);
+    if (req.session.loggedIn) {
+      const { username, userId } = req.session;
+      const tableName = `${username}${userId}_up`;
 
-    res.render("partials/wordblock", {
-      wordsArray,
-      correctOrder: game.correct_order,
-      blankWord: game.hidden_word,
-      level: game.id,
-      points: game.points,
-      loggedIn: req.session.loggedIn,
-      username: req.session.username,
-      score: req.session.userScore,
-      currentLevel: req.session.currentLevel,
-      userId: req.session.userId,
-      uploadDate: game.upload_date,
-    });
+      console.log("Game data:", game);
+
+      const [userData, metadata] = await sequelize.query(
+        `
+        SELECT * from ${tableName} where puzzle = ${game.id}
+        `,
+        {}
+      );
+
+      console.log("This is my user data: ", userData);
+
+      console.log(`the user ${username} has an id of ${userId}`);
+
+      if (userData && userData[0] && userData[0].solved === 1) {
+        res.render("partials/solved", {
+          numberOfAttempts: userData[0].number_of_attempts,
+          time: userData[0].time,
+          compoundled: game.compoundled,
+          nextLevel: game.level + 1,
+        });
+      } else {
+        res.render("partials/wordblock", {
+          wordsArray,
+          correctOrder: game.correct_order,
+          blankWord: game.hidden_word,
+          level: game.id,
+          points: game.points,
+          loggedIn: req.session.loggedIn,
+          username: req.session.username,
+          score: req.session.userScore,
+          currentLevel: req.session.currentLevel,
+          userId: req.session.userId,
+          uploadDate: game.upload_date,
+        });
+      }
+    } else {
+      // Handle the case when the user is not logged in
+      res.render("partials/wordblock", {
+        wordsArray,
+        correctOrder: game.correct_order,
+        blankWord: game.hidden_word,
+        level: game.id,
+        points: game.points,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+        score: req.session.userScore,
+        currentLevel: req.session.currentLevel,
+        userId: req.session.userId,
+        uploadDate: game.upload_date,
+      });
+    }
 
     console.log("The username I have is, ", req.session.username);
     console.log("The user Id I have is, ", req.session.userId);

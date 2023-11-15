@@ -184,6 +184,16 @@ nav a:hover {
   height: 50px;
 }
 
+.next-level-button {
+  margin: 10px;
+  background-color: var(--success);
+  border-radius: var(--border-radius);
+  color: var(--dark);
+  font-family: "Inconsolata", monospace;
+  width: 150px;
+  height: 50px;
+}
+
 /* Output order styling */
 #outputvalues {
   margin: 20px 2px 2px 2px;
