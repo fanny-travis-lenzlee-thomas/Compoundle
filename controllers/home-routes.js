@@ -199,6 +199,7 @@ router.get("/game/:id", async (req, res) => {
           time: userData[0].time,
           compoundled: game.compoundled,
           nextLevel: game.level + 1,
+          uploadDate: game.upload_date,
         });
       } else {
         res.render("partials/wordblock", {
@@ -303,6 +304,7 @@ router.get("/today", async (req, res) => {
           time: userData[0].time,
           compoundled: game.compoundled,
           nextLevel: game.level + 1,
+          uploadDate: game.upload_date,
         });
       } else {
         res.render("partials/wordblock", {
