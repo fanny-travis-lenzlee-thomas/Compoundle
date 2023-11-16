@@ -18,6 +18,7 @@ const numberOfAttemptsSpan = document.querySelector("#number-of-attempts-span");
 const dateTimeLine = document.querySelector("#date-time");
 const uploadDateSpan = document.querySelector("#upload-date-span");
 const imageList = document.querySelector("#imageListId");
+const hintButton = document.querySelector("#hint-button");
 const blankWord = blankWordBlock.textContent;
 const capitalizedBlankWord =
   blankWord.charAt(0).toUpperCase() + blankWord.slice(1);
@@ -28,7 +29,6 @@ const nextLevel = currentLevel + 1;
 const points = parseInt(pointsBlock.textContent, 10);
 const userId = parseInt(userIdBlock.textContent, 10);
 const username = usernameBlock.textContent;
-console.log("This is how long the username is: ", username.length);
 let newScore;
 let totalSeconds = 0;
 let intervalId;
@@ -36,12 +36,8 @@ let numberOfAttempts = 0;
 let solved;
 let loggedIn;
 let dateSolved;
+let hintButtonClickCount = 0;
 let emojiArray = [];
-
-console.log("This is the username: ", username);
-console.log("This is the user ID: ", userId);
-
-console.log("The current level is, ", currentLevel);
 
 correctAnswerArray = correctOrder.split(",").map(Number);
 //checks if the user is playing on mobile
@@ -201,6 +197,7 @@ function checkAnswer(blankWord, correctOrder) {
       resultsContainer.appendChild(confettiContainer);
 
       submitButton.remove();
+      hintButton.remove();
       nextLevelButton.addEventListener("click", function () {
         window.location.href = nextLevelButton.href;
       });
@@ -230,7 +227,7 @@ function checkAnswer(blankWord, correctOrder) {
             if (navigator.share) {
               await navigator.share({
                 title: "Compoundle Challenge",
-                text: `I beat today's Compoundle in ${time} seconds!`,
+                text: `I beat today's Compoundle in ${time} seconds! \n ${emojiParagraph}`,
                 url: window.location.href,
               });
             } else {
@@ -251,12 +248,23 @@ function checkAnswer(blankWord, correctOrder) {
       losingResult.id = "losing-result";
       losingResult.display = "inline-block";
       losingResult.textContent = "Something Isn't Right...";
+      hintButton.classList.remove("hidden");
       resultsContainer.appendChild(losingResult);
     }
-    var emojiString = emojiArray.join("") + " ";
+
+    // Creates a sharable emoji block of path to correct answer
+    var emojiParagraph = "";
+    for (var i = 0; i < emojiArray.length; i++) {
+      emojiParagraph += emojiArray[i];
+
+      // adds a line break every 3, 4, 5, 6, or 7 words depending on the length fo the level
+      if ((i + 1) % correctAnswerArray.length === 0) {
+        emojiParagraph += "\n";
+      }
+    }
 
     console.log(emojiArray);
-    console.log(emojiString);
+    console.log(emojiParagraph);
 
     resolve(isCorrect);
   });
@@ -293,6 +301,8 @@ $(function () {
 
   // Event listener on the submit button
   submitButton.addEventListener("click", async function () {
+    checkButtonClicked = true;
+
     const isCorrect = await checkAnswer(blankWord, correctOrder);
 
     // Enable or disable sorting based on the isCorrect condition
@@ -399,6 +409,14 @@ function updateUserPuzzleData(totalSeconds, numberOfAttempts) {
     });
 }
 
+function addHint(i) {
+  if (hintButtonClickCount <= blankWord.length) {
+    console.log("This is the hint button click count", hintButtonClickCount);
+    guessBox.value += blankWord[i - 1];
+  }
+  checkButtonClicked = false;
+}
+
 //Function that adds instructions for the blank word portion
 function isDemoLevel() {
   if (nextLevel === 17) {
@@ -425,6 +443,17 @@ intervalId = setInterval(countTime, 1000);
 //   await checkAnswer(blankWord, correctOrder);
 //   updateScoreOnServer(newScore, nextLevel, userId);
 // });
+
+hintButton.addEventListener("click", function () {
+  if (checkButtonClicked) {
+    hintButtonClickCount++;
+
+    addHint(hintButtonClickCount);
+  } else {
+    // Display a message or perform any action to indicate that the check button needs to be clicked first.
+    console.log("Please click the check button first.");
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function (totalSeconds) {
   const time = totalSeconds;
