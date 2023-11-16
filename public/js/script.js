@@ -222,12 +222,13 @@ function checkAnswer(blankWord, correctOrder) {
         shareButton.textContent = "Share";
         shareButton.classList.add("next-level-button");
         resultsContainer.appendChild(shareButton);
+        const compoundleLink = window.location.href;
         shareButton.addEventListener("click", async () => {
           try {
             if (navigator.share) {
               await navigator.share({
-                title: "Compoundle Challenge",
-                text: `I beat today's Compoundle in ${time} seconds! \n ${emojiParagraph}`,
+                // title: "Compoundle Challenge",
+                text: `I beat today's Compoundle ${compoundleLink}! Time: ${time} seconds in ${numberOfAttempts} tries! \n ${emojiParagraph}`,
                 url: window.location.href,
               });
             } else {

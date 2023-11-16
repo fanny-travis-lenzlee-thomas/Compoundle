@@ -407,12 +407,14 @@ router.get("/allPuzzles", async (req, res) => {
       ],
     });
 
+    console.log("This is the dbGames Data: ", dbGamesData[0]);
+
     const beforeTodayData = await sequelize.query(`SELECT *
     FROM game
     WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
     `);
 
-    console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
+    // console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
 
     parsableBeforeTodayDatas = beforeTodayData[0];
 
@@ -445,10 +447,10 @@ router.get("/allPuzzles", async (req, res) => {
         }
       );
 
-      console.log(
-        "This is the before today data combined, ",
-        beforeTodayCombinedData
-      );
+      // console.log(
+      //   "This is the before today data combined, ",
+      //   beforeTodayCombinedData
+      // );
 
       const combinedData = games.map((game) => {
         const userDataItem = userDataMap[game.level] || {}; // Default to an empty object if no match is found
@@ -466,7 +468,7 @@ router.get("/allPuzzles", async (req, res) => {
       });
       console.log(req.session.username);
     } else {
-      console.log("This is my db games data", dbGamesData);
+      // console.log("This is my db games data", dbGamesData);
       res.render("partials/testpuzzlesnotloggedin", {
         dbGamesData: dbGamesData,
         loggedIn: req.session.loggedIn,
