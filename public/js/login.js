@@ -1,3 +1,5 @@
+const dateTimeLine = document.querySelector("#date-time");
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -18,6 +20,11 @@ const loginFormHandler = async (event) => {
     }
   }
 };
+
+function updateDateTime() {
+  const currentDateTime = dayjs().format("MM/DD/YYYY");
+  dateTimeLine.textContent = currentDateTime;
+}
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
@@ -57,6 +64,13 @@ const signupFormHandler = async (event) => {
     }
   }
 };
+
+function updateDateTime() {
+  const currentDateTime = dayjs().format("MM/DD/YYYY");
+  dateTimeLine.textContent = currentDateTime;
+}
+
+updateDateTime();
 
 document
   .querySelector(".login-form")
