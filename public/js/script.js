@@ -228,8 +228,8 @@ function checkAnswer(blankWord, correctOrder) {
             if (navigator.share) {
               await navigator.share({
                 // title: "Compoundle Challenge",
-                text: `I beat today's Compoundle ${compoundleLink}! Time: ${time} seconds in ${numberOfAttempts} tries! \n ${emojiParagraph}`,
-                url: window.location.href,
+                text: `I beat today's Compoundle!\nTime: ${time} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
+                // url: window.location.href,
               });
             } else {
               alert("Coming soon!");
@@ -413,7 +413,8 @@ function updateUserPuzzleData(totalSeconds, numberOfAttempts) {
 function addHint(i) {
   if (hintButtonClickCount <= blankWord.length) {
     console.log("This is the hint button click count", hintButtonClickCount);
-    guessBox.value += blankWord[i - 1];
+    guessBox.value = "";
+    for (i = 0; i < hintButtonClickCount; i++) guessBox.value += blankWord[i];
   }
   checkButtonClicked = false;
 }
