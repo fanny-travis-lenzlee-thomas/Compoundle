@@ -414,8 +414,6 @@ router.get("/allPuzzles", async (req, res) => {
     WHERE STR_TO_DATE(upload_date, '%m/%d/%Y') < CURDATE();
     `);
 
-    console.log("This is the beforeTodayData, ", beforeTodayData[0][0]);
-
     parsableBeforeTodayDatas = beforeTodayData[0];
 
     // console.log("This is the new dbGamesData: ", dbGamesData);
@@ -460,7 +458,7 @@ router.get("/allPuzzles", async (req, res) => {
         };
       });
       res.render("partials/testpuzzle", {
-        beforeTodayCombinedData: parsableBeforeTodayData,
+        beforeTodayCombinedData: beforeTodayCombinedData,
         combinedData: combinedData,
         loggedIn: req.session.loggedIn,
         username: req.session.username,
