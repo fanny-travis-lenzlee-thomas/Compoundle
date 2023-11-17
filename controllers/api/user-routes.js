@@ -318,7 +318,7 @@ router.get("/profile", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "Could not update score" });
+    res.status(500).render("error", { errorMessage: err.message });
   }
 });
 
