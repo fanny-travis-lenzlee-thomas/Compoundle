@@ -224,13 +224,25 @@ function checkAnswer(blankWord, correctOrder) {
         shareButton.classList.add("next-level-button");
         resultsContainer.appendChild(shareButton);
         const compoundleLink = window.location.href;
+        var emojiParagraph = "";
+        for (var i = 0; i < emojiArray.length; i++) {
+          emojiParagraph += emojiArray[i];
+
+          // adds a line break every 3, 4, 5, 6, or 7 words depending on the length fo the level
+          if ((i + 1) % correctAnswerArray.length === 0) {
+            emojiParagraph += "\n";
+          }
+        }
+
+        console.log(
+          `I have access to these! ${totalSeconds}, ${numberOfAttempts}, ${emojiParagraph}`
+        );
         shareButton.addEventListener("click", async () => {
           try {
             if (navigator.share) {
               await navigator.share({
                 title: "Compoundle",
-                // text: `I beat today's Compoundle!\nTime: ${time} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
-                text: `I beat today's compoundle!`,
+                text: `I beat today's Compoundle!\n ${totalSeconds} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
                 url: compoundleLink,
               });
             } else {
@@ -256,15 +268,6 @@ function checkAnswer(blankWord, correctOrder) {
     }
 
     // Creates a sharable emoji block of path to correct answer
-    var emojiParagraph = "";
-    for (var i = 0; i < emojiArray.length; i++) {
-      emojiParagraph += emojiArray[i];
-
-      // adds a line break every 3, 4, 5, 6, or 7 words depending on the length fo the level
-      if ((i + 1) % correctAnswerArray.length === 0) {
-        emojiParagraph += "\n";
-      }
-    }
 
     console.log(emojiArray);
     console.log(emojiParagraph);
