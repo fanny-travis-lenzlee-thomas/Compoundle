@@ -19,7 +19,7 @@ const dateTimeLine = document.querySelector("#date-time");
 const uploadDateSpan = document.querySelector("#upload-date-span");
 const imageList = document.querySelector("#imageListId");
 const hintButton = document.querySelector("#hint-button");
-const blankWord = blankWordBlock.textContent;
+let blankWord = blankWordBlock.textContent;
 const capitalizedBlankWord =
   blankWord.charAt(0).toUpperCase() + blankWord.slice(1);
 
@@ -46,6 +46,7 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 //If they are, adds the blank word to the guess box as currently the jquery we are using does not support input boxes.
 if (isMobile && nextLevel > 16) {
   guessBox.parentElement.textContent = capitalizedBlankWord;
+  blankWord = null;
   guessBox.remove();
 }
 
@@ -205,7 +206,7 @@ function checkAnswer(blankWord, correctOrder) {
       //Checks if user is playing the daily puzzle
       if (dateTimeLine.textContent === uploadDateSpan.textContent) {
         nextLevelButton.remove();
-        winningResult.textContent = "You beat today's puzzle!! ";
+        // winningResult.textContent = "You beat today's puzzle!! ";
         var moreLevelsButton = document.createElement("button");
         var moreLevelsAnchor = document.createElement("a");
         moreLevelsButton.textContent = "More Levels";
