@@ -213,8 +213,13 @@ function checkAnswer(blankWord, correctOrder) {
         dateTimeLine.textContent === uploadDateSpan.textContent ||
         formattedTomorrowDate === uploadDateSpan.textContent
       ) {
+        nextLevelAnchor.remove();
         nextLevelButton.remove();
-        // winningResult.textContent = "You beat today's puzzle!! ";
+        winningResult.remove();
+        var winningResult = document.createElement("h1");
+
+        winningResult.textContent = "You beat today's puzzle!! ";
+        resultsContainer.appendChild(winningResult);
         var moreLevelsButton = document.createElement("button");
         var moreLevelsAnchor = document.createElement("a");
         moreLevelsButton.textContent = "More Levels";
@@ -276,7 +281,9 @@ function checkAnswer(blankWord, correctOrder) {
       losingResult.id = "losing-result";
       losingResult.display = "inline-block";
       losingResult.textContent = "Something Isn't Right...";
-      hintButton.classList.remove("hidden");
+      if (!isMobile) {
+        hintButton.classList.remove("hidden");
+      }
       resultsContainer.appendChild(losingResult);
     }
 
