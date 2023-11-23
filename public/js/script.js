@@ -253,9 +253,9 @@ function checkAnswer(blankWord, correctOrder) {
         shareButton.addEventListener("click", async () => {
           try {
             if (numberOfAttempts === 1) {
-              shareText = `Compoundle ${uploadDateSpan.textContent}\n\n ${totalSeconds} seconds in ${numberOfAttempts} try!\n\n${emojiParagraph}`;
+              shareText = `I beat \n Compoundle ${uploadDateSpan.textContent}\n\n${totalSeconds} seconds in ${numberOfAttempts} try!\n\n${emojiParagraph}`;
             } else {
-              shareText = `Compoundle ${uploadDateSpan.textContent}!\n\n ${totalSeconds} seconds in ${numberOfAttempts} tries!\n\n${emojiParagraph}`;
+              shareText = `I beat \n Compoundle ${uploadDateSpan.textContent}\n\n${totalSeconds} seconds in ${numberOfAttempts} tries!\n\n${emojiParagraph}`;
             }
             if (navigator.share) {
               await navigator.share({
