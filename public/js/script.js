@@ -29,6 +29,10 @@ const nextLevel = currentLevel + 1;
 const points = parseInt(pointsBlock.textContent, 10);
 const userId = parseInt(userIdBlock.textContent, 10);
 const username = usernameBlock.textContent;
+const currentDate = dayjs();
+const currentDateTime = dayjs().format("MM/DD/YYYY");
+const tomorrowDate = currentDate.add(1, "day");
+const formattedTomorrowDate = tomorrowDate.format("MM/DD/YYYY");
 let newScore;
 let totalSeconds = 0;
 let intervalId;
@@ -38,6 +42,7 @@ let loggedIn;
 let dateSolved;
 let hintButtonClickCount = 0;
 let emojiArray = [];
+let shareText = "";
 
 correctAnswerArray = correctOrder.split(",").map(Number);
 //checks if the user is playing on mobile
@@ -204,7 +209,10 @@ function checkAnswer(blankWord, correctOrder) {
       });
 
       //Checks if user is playing the daily puzzle
-      if (dateTimeLine.textContent === uploadDateSpan.textContent) {
+      if (
+        dateTimeLine.textContent === uploadDateSpan.textContent ||
+        formattedTomorrowDate === uploadDateSpan.textContent
+      ) {
         nextLevelButton.remove();
         // winningResult.textContent = "You beat today's puzzle!! ";
         var moreLevelsButton = document.createElement("button");
@@ -239,10 +247,15 @@ function checkAnswer(blankWord, correctOrder) {
         );
         shareButton.addEventListener("click", async () => {
           try {
+            if (numberOfAttempts === 1) {
+              shareText = `I beat today's Compoundle!\n\n ${totalSeconds} seconds in ${numberOfAttempts} try!\n${emojiParagraph}`;
+            } else {
+              shareText = `I beat today's Compoundle!\n\n ${totalSeconds} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`;
+            }
             if (navigator.share) {
               await navigator.share({
                 title: "Compoundle",
-                text: `I beat today's Compoundle!\n ${totalSeconds} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
+                text: shareText,
                 url: compoundleLink,
               });
             } else {
@@ -432,7 +445,6 @@ function isDemoLevel() {
   }
 }
 function updateDateTime() {
-  const currentDateTime = dayjs().format("MM/DD/YYYY");
   dateTimeLine.textContent = currentDateTime;
 }
 
