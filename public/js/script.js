@@ -228,9 +228,10 @@ function checkAnswer(blankWord, correctOrder) {
           try {
             if (navigator.share) {
               await navigator.share({
-                title: "Compoundle Challenge",
-                text: `I beat today's Compoundle!\nTime: ${time} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
-                url: window.location.href,
+                title: "Compoundle",
+                // text: `I beat today's Compoundle!\nTime: ${time} seconds in ${numberOfAttempts} tries!\n${emojiParagraph}`,
+                text: `I beat today's compoundle!`,
+                url: compoundleLink,
               });
             } else {
               alert("Coming soon!");
