@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS rearranger_db;
+DROP DATABASE IF EXISTS compoundle_db;
 
-CREATE DATABASE rearranger_db;
+CREATE DATABASE compoundle_db;

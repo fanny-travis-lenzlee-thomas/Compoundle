@@ -1,20 +1,25 @@
 {{#if loggedIn}}
-  
+
   {{#unless currentLevel}}
-    <button id="submit-button"><a href="game/1">Start Game</a></button>
+    <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
+    {{! <button id="submit-button"><a href="game/1">First Puzzle</a></button> }}
+    {{! <a href="/api/users/puzzles">
+      <button class="submit-button">All Puzzles</button></a> }}
 
   {{else}}
-  
-  <button id="submit-button"><a href="game/{{currentLevel}}">Start Game</a></button>
-  
+    <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
+    {{!-- <button id="submit-button"><a href="game/{{currentLevel}}">Next Puzzle</a></button> --}}
+    {{! <a href="/allPuzz"><button class="submit-button">All Puzzles</button></a> }}
+
   {{/unless}}
 
 {{else}}
-  <button id="submit-button"><a href="game/1">Start Game</a></button>
+  <a href="/today"><button id="submit-button">Today's Puzzle</button></a>
 
 {{/if}}
+<a href="/allPuzzles"><button class="submit-button">All Puzzles</button></a>
 
-<div>
+<div id="instructions">
   <h2>How To Play:</h2>
 
   <p>Rearrange the word blocks to form a chain of compound words and click
@@ -23,4 +28,7 @@
 <iframe
   width="420"
   height="345"
-  src="https://www.youtube.com/embed/zWC4_OTc_jg">
+  src="https://www.youtube.com/embed/d8cMThiB-B8"
+></iframe>
+
+<script src="/js/logout.js"></script>

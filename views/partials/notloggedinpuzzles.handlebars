@@ -1,0 +1,13 @@
+<h2>Log In To Save Scores</h2>
+{{#each dbGamesData}}
+  <div class="user-puzzle-info">
+    <h3 id="profile-puzzle-title"><a href="/game/{{this.id}}">Puzzle
+        {{this.id}}</a>
+      |
+      {{this.upload_date}}</h3>
+    <h1 id="profile-puzzle-words">{{this.words}}</h1>
+    {{!-- <h3>Time: {{this.time}} seconds</h3>
+    <h3>Number of Attempts: {{this.number_of_attempts}} </h3> --}}
+    {{!-- <a href="/game/{{this.id}}"><h3>Not yet solved</h3></a> --}}
+  </div>
+{{/each}}
