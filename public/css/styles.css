@@ -19,7 +19,9 @@
   font-family: avenir;
   color: var(--dark);
 }
-
+html {
+  height: 100svh;
+}
 body {
   text-align: center;
   font-family: sans-serif;
