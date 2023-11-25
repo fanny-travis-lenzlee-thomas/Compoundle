@@ -250,12 +250,14 @@ function checkAnswer(blankWord, correctOrder) {
         console.log(
           `I have access to these! ${totalSeconds}, ${numberOfAttempts}, ${emojiParagraph}, ${uploadDateSpan.textContent}`
         );
+        let dayMonth = uploadDateSpan.textContent.slice(0, 5);
+        console.log("Here is my day month", dayMonth);
         shareButton.addEventListener("click", async () => {
           try {
             if (numberOfAttempts === 1) {
-              shareText = `I beat \n Compoundle ${uploadDateSpan.textContent}\n\n${totalSeconds} seconds in ${numberOfAttempts} try!\n\n${emojiParagraph}`;
+              shareText = `Compoundle - ${dayMonth}\n\n${totalSeconds} seconds in ${numberOfAttempts} try!\n\n${emojiParagraph}`;
             } else {
-              shareText = `I beat \n Compoundle ${uploadDateSpan.textContent}\n\n${totalSeconds} seconds in ${numberOfAttempts} tries!\n\n${emojiParagraph}`;
+              shareText = `Compoundle - ${dayMonth}\n\n${totalSeconds} seconds in ${numberOfAttempts} tries!\n\n${emojiParagraph}`;
             }
             if (navigator.share) {
               await navigator.share({
