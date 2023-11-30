@@ -157,9 +157,12 @@ router.get("/puzzles", async (req, res) => {
 //   }
 // });
 
-router.get("/game/:id", async (req, res) => {
+router.get("/game/:level", async (req, res) => {
   try {
-    const dbGameData = await Game.findByPk(req.params.id, {
+    const dbGameData = await Game.findOne({
+      where: {
+        level: req.params.level,
+      },
       attributes: [
         "id",
         "words",
@@ -174,7 +177,6 @@ router.get("/game/:id", async (req, res) => {
 
     const game = dbGameData.get({ plain: true });
     const wordsArray = game.words.split(", ");
-    const id = req.params.id;
 
     if (req.session.loggedIn) {
       const { username, userId } = req.session;
@@ -184,7 +186,7 @@ router.get("/game/:id", async (req, res) => {
 
       const [userData, metadata] = await sequelize.query(
         `
-        SELECT * from ${tableName} where puzzle = ${id}
+        SELECT * from ${tableName} where puzzle = ${req.params.level}
         `,
         {}
       );
@@ -206,7 +208,7 @@ router.get("/game/:id", async (req, res) => {
           wordsArray,
           correctOrder: game.correct_order,
           blankWord: game.hidden_word,
-          level: game.id,
+          level: game.level, // Change from game.id to game.level
           points: game.points,
           loggedIn: req.session.loggedIn,
           username: req.session.username,
@@ -222,7 +224,7 @@ router.get("/game/:id", async (req, res) => {
         wordsArray,
         correctOrder: game.correct_order,
         blankWord: game.hidden_word,
-        level: game.id,
+        level: game.level, // Change from game.id to game.level
         points: game.points,
         loggedIn: req.session.loggedIn,
         username: req.session.username,

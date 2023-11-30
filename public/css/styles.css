@@ -167,6 +167,7 @@ nav a:hover {
   border: 1px solid var(--dark);
   color: var(--dark);
 }
+
 #losing-result {
   background-color: var(--error);
   text-align: center;
