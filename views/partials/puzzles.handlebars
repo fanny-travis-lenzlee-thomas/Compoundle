@@ -1,7 +1,7 @@
 {{#each beforeTodayCombinedData}}
   <div class="user-puzzle-info{{#if this.userData.solved}} solved-puzzle{{/if}}">
-    <h3 id="profile-puzzle-title"><a href="/game/{{this.id}}">Puzzle
-        {{this.id}}</a>
+    <h3 id="profile-puzzle-title"><a href="/game/{{this.level}}">Puzzle
+        {{this.level}}</a>
       |
       {{this.upload_date}}</h3>
     <h1 id="profile-puzzle-words">{{this.games.compoundled}}</h1>
