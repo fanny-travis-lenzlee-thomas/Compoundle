@@ -320,7 +320,7 @@ router.get("/today", async (req, res) => {
           wordsArray,
           correctOrder: game.correct_order,
           blankWord: game.hidden_word,
-          level: game.id,
+          level: game.level,
           points: game.points,
           loggedIn: req.session.loggedIn,
           username: req.session.username,
